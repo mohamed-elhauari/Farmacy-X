@@ -22,4 +22,4 @@ require __DIR__.'/auth.php';
 
 Route::get('/dashboard-pharmacist', function () {
     return view('pharmacist.dashboard');
-});
+})->name('dashboard.pharmacist');
