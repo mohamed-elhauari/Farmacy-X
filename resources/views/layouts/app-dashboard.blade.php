@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Pharmacy-X') }}</title>
+        <link rel="icon" href="{{ asset('favicon.ico') }}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -48,7 +49,7 @@
                                 <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm pe-1 font-medium text-gray-700 rounded-full hover:text-green-600 dark:hover:text-green-500 md:me-0 dark:text-white" type="button">
                                     <span class="sr-only">Open user menu</span>
                                     <img class="w-8 h-8 me-2 rounded-full" src="https://www.hunterlab.com/media/images/k8-77Tph4X3StM-unsplash-min.2e16d0ba.fill-692x346.jpg.pagespeed.ce.HbqvZu8Ter.jpg" alt="user photo">
-                                    {{ Auth::user()->name }}
+                                    {{-- Auth::user()->username --}}
                                     <svg class="w-2.5 h-2.5 ms-3 mt-1 text-gray-700 hover:text-green-600 dark:hover:text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                                     </svg>
@@ -57,8 +58,8 @@
                                 <!-- Dropdown menu -->
                                 <div id="dropdownAvatarName" class="p-2 z-10 w-64 hidden bg-white divide-y divide-gray-100 rounded-xl border border-gray-200 shadow-sm dark:bg-gray-700 dark:divide-gray-600 dark:border-gray-800">
                                     <div class="px-4 py-3 text-sm text-gray-700 dark:text-white">
-                                        <div class="font-medium">{{ Auth::user()->name }}</div>
-                                        <div class="truncate">{{ Auth::user()->email }}</div>
+                                        <div class="font-medium">{{-- Auth::user()->username --}}</div>
+                                        <div class="truncate">{{-- Auth::user()->email --}}</div>
                                     </div>
                                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
                                         <li>
