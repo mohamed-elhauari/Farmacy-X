@@ -23,7 +23,7 @@
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
             <div>
                 <a href="/" class="flex">
-                    <img src="{{ asset('images/logo.png') }}" class="h-8 me-3" alt="FlowBite Logo" />
+                    <img src="{{ asset('images/logo.png') }}" class="h-8 me-3" alt="Farmacy-X Logo" />
                     <span class="self-center text-xl font-boldonse font-bold sm:text-xl whitespace-nowrap text-gray-800 dark:text-white">Farmacy-X</span>
                 </a>
             </div>
