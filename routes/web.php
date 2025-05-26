@@ -33,6 +33,6 @@ Route::get('/medicines/1', function () {
     return view('customer.medicines.show');
 })->name('customer.medicines.show');
 
-Route::get('/medicines/card', function () {
-    return view('customer.medicines.card');
-})->name('customer.medicines.card');
+Route::get('/medicines/cart', function () {
+    return view('customer.medicines.cart');
+})->name('customer.medicines.cart');
