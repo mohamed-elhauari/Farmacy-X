@@ -2,7 +2,7 @@
 
 
 
-    <div class="min-h-[calc(100vh-4rem)] flex flex-col md:flex-row items-center justify-center py-16 px-4 lg:px-12 xl:px-24 md:py-32 bg-white dark:bg-gray-800 md:gap-6 transition-all duration-300">
+    <div class="min-h-[calc(100vh-4rem)] flex flex-col md:flex-row items-center justify-center py-16 px-4 lg:px-12 xl:px-24 md:py-32 bg-white dark:bg-gray-900 md:gap-6 transition-all duration-300">
 
         <div class="grid grid-cols-2 gap-2 max-w-lg">
             <div>
@@ -21,7 +21,7 @@
 
         <div class="w-full sm:w-[512px]">
 
-            <h1 class="mb-4 mt-8 text-start text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Doliprane,<span class="text-green-600 dark:text-green-500"> (Paracétamol - SANOFI)</span></h1>
+            <h1 class="mb-4 mt-8 md:mt-2 text-start text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Doliprane,<span class="text-green-600 dark:text-green-500"> (Paracétamol - SANOFI)</span></h1>
 
             <ul class="max-w-md space-y-1 text-gray-500 list-none list-inside dark:text-gray-400">
                 <li>
