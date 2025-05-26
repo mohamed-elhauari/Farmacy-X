@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Pharmacy-X') }}</title>
+        <title>{{ config('app.name', 'Farmacy-X') }}</title>
         <link rel="icon" href="{{ asset('favicon.ico') }}">
 
         <!-- Fonts -->
@@ -49,7 +49,7 @@
                                 <a href="/" class="block py-2 px-3 text-white bg-green-700 rounded-sm md:bg-transparent md:text-green-700 md:p-0 md:dark:text-green-500" aria-current="page">Accueil</a>
                             </li>
                             <li>
-                                <button id="mega-menu-full-dropdown-button" data-collapse-toggle="mega-menu-full-dropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-sm md:w-auto hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-600 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-green-500 md:dark:hover:bg-transparent dark:border-gray-700">
+                                <button id="mega-menu-full-dropdown-button" data-collapse-toggle="mega-menu-full-dropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-sm md:w-auto hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-green-500 md:dark:hover:bg-transparent dark:border-gray-700">
                                     Médicaments
                                     <svg class="w-2.5 h-2.5 ms-2.5 mt-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -68,20 +68,20 @@
                     <div class="grid max-w-screen-xl px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:grid-cols-3 md:px-6">
                         <ul aria-labelledby="mega-menu-full-dropdown-button">
                             <li>
-                                <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="font-semibold">Online Stores</div>
+                                <a href="{{ route('customer.medicines.index') }}" class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                    <div class="font-semibold text-green-700 dark:text-green-600">Toutes les médicaments</div>
                                     <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="font-semibold">Segmentation</div>
+                                    <div class="font-semibold">Antidouleur et anti-inflammatoire</div>
                                     <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="font-semibold">Marketing CRM</div>
+                                    <div class="font-semibold">Neurologique et psychiatrie</div>
                                     <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
                                 </a>
                             </li>
@@ -89,19 +89,19 @@
                         <ul>
                             <li>
                                 <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="font-semibold">Online Stores</div>
+                                    <div class="font-semibold">Complément alimentaire</div>
                                     <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="font-semibold">Segmentation</div>
+                                    <div class="font-semibold">Produit dermatologique</div>
                                     <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="font-semibold">Marketing CRM</div>
+                                    <div class="font-semibold">Médicament cardiovasculaire</div>
                                     <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
                                 </a>
                             </li>
@@ -109,19 +109,19 @@
                         <ul class="hidden md:block">
                             <li>
                                 <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="font-semibold">Audience Management</div>
+                                    <div class="font-semibold">Antibiotique</div>
                                     <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="font-semibold">Creative Tools</div>
+                                    <div class="font-semibold">Antidouleur</div>
                                     <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="font-semibold">Marketing Automation</div>
+                                    <div class="font-semibold">Produit pédiatrique</div>
                                     <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
                                 </a>
                             </li>
@@ -134,13 +134,13 @@
             
 
             <!-- Main Content -->
-            <div class="pt-16 mx-auto">
+            <div class="mx-auto">
                 {{ $slot }}
             </div>
 
             
             <!-- Footer -->
-            <footer class="bg-white rounded-lg shadow-sm dark:bg-gray-900">
+            <footer class="bg-white rounded-lg shadow-sm dark:bg-gray-800">
                 <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                     <div class="sm:flex sm:items-center sm:justify-between">
                         <a href="/" class="flex ms-2 md:me-8">

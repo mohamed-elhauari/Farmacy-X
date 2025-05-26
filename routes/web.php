@@ -24,3 +24,15 @@ Route::get('/dashboard-pharmacist', function () {
 Route::get('/', function () {
     return view('customer.welcome');
 })->name('customer.welcome');
+
+Route::get('/medicines', function () {
+    return view('customer.medicines.index');
+})->name('customer.medicines.index');
+
+Route::get('/medicines/1', function () {
+    return view('customer.medicines.show');
+})->name('customer.medicines.show');
+
+Route::get('/medicines/card', function () {
+    return view('customer.medicines.card');
+})->name('customer.medicines.card');
