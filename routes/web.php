@@ -36,3 +36,7 @@ Route::get('/medicines/1', function () {
 Route::get('/medicines/cart', function () {
     return view('customer.medicines.cart');
 })->name('customer.medicines.cart');
+
+Route::get('/pharmacist/medicine/add', function () {
+    return view('pharmacist.medicines.add');
+})->name('pharmacist.medicines.add');
