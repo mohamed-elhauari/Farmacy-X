@@ -50,6 +50,7 @@ return new class extends Migration
 
         Schema::create('inventories', function (Blueprint $table) {
             $table->id();
+            $table->string('lot'); // looooooot
             $table->foreignId('medicine_id')->constrained()->onDelete('cascade');
             $table->integer('quantite');
             $table->decimal('prix_achat', 8, 2); // Prix d'achat pour la pharmacie

@@ -40,3 +40,15 @@ Route::get('/medicines/cart', function () {
 Route::get('/pharmacist/medicine/add', function () {
     return view('pharmacist.medicines.add');
 })->name('pharmacist.medicines.add');
+
+Route::get('/pharmacist/medicine', function () {
+    return view('pharmacist.medicines.index');
+})->name('pharmacist.medicines.index');
+
+Route::get('/pharmacist/medicine/1', function () {
+    return view('pharmacist.medicines.show');
+})->name('pharmacist.medicines.show');
+
+Route::get('/pharmacist/medicine/add-infos', function () {
+    return view('pharmacist.medicines.add-infos');
+})->name('pharmacist.medicines.add-infos');

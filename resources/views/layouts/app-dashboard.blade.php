@@ -137,19 +137,19 @@
                             </button>
                             <ul id="dropdown-mdc" class="hidden py-2 space-y-2">
                                 <li>
-                                    <a href="#" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Liste des Médicaments</a>
+                                    <a href="{{ route('pharmacist.medicines.index') }}" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Liste des Médicaments</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('pharmacist.medicines.add') }}" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Ajouter un Médicament</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Mdc. en stock faible</a>
                                 </li>
                                 <li>
                                     <a href="#" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Mdc. proches de péremption</a>
                                 </li>
                                 <li>
                                     <a href="#" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Mdc. expirés</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Mdc. en stock faible</a>
                                 </li>
                             </ul>
                         </li>
