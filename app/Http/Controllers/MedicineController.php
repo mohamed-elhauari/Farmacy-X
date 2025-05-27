@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Medicine;
+use App\Models\Inventory;
 use Illuminate\Http\Request;
 
 class MedicineController extends Controller
@@ -47,12 +48,17 @@ class MedicineController extends Controller
                 ->with('error', 'Médicament non trouvé pour le code: ' . $code);
         }
 
-        return view('pharmacist.medicines.show', compact('medicine'));
+        $inventories = $medicine->inventories;
+
+        return view('pharmacist.medicines.show', compact('medicine', 'inventories'));
     }
 
     public function indexPharmacist()
     {
-        $medicines = Medicine::orderBy('commercial_name')->paginate(10);
+        $medicines = Medicine::with('inventories')
+                            ->orderBy('commercial_name')
+                            ->paginate(10);
+
         return view('pharmacist.medicines.index', compact('medicines'));
     }
 

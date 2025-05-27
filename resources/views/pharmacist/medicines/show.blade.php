@@ -23,7 +23,7 @@
 
             <ul class="max-w-md space-y-1 text-gray-500 list-none list-inside dark:text-gray-400">
                 <li>
-                    <b class="text-gray-600 dark:text-gray-300">Code :</b> {{ $medicine->code }}
+                    <b class="text-gray-600 dark:text-gray-300">Code :</b> {{ $medicine->code }} 
                 </li>
                 <li>
                     <b class="text-gray-600 dark:text-gray-300">Forme :</b> {{ $medicine->form }}
@@ -82,40 +82,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            lot-99
-                        </th>
-                        <td class="px-6 py-4">
-                            200
-                        </td>
-                        <td class="px-6 py-4">
-                            15.2 MAD
-                        </td>
-                        <td class="px-6 py-4">
-                            21-05-2025
-                        </td>
-                        <td class="px-6 py-4">
-                            30-12-2026
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            lot-99
-                        </th>
-                        <td class="px-6 py-4">
-                            200
-                        </td>
-                        <td class="px-6 py-4">
-                            15.2 MAD
-                        </td>
-                        <td class="px-6 py-4">
-                            21-05-2025
-                        </td>
-                        <td class="px-6 py-4">
-                            30-12-2026
-                        </td>
-                    </tr>
+                    @forelse($inventories as $inventory)
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ $inventory->lot }}
+                            </th>
+                            <td class="px-6 py-4">
+                                {{ $inventory->quantity }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $inventory->purchase_price }} MAD
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ ($inventory->created_at)->format('Y-m-d') }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $inventory->expiration_date }}
+                            </td>
+                        </tr>
+                    @empty
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                            <td colspan="5" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">
+                                Aucun médicament trouvé dans le stock.
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

@@ -18,4 +18,9 @@ class Medicine extends Model
     {
         return $this->hasMany(Inventory::class);
     }
+
+    public function getQuantityAttribute()
+    {
+        return $this->inventories->sum('quantity');
+    }
 }
