@@ -2,17 +2,20 @@
 
 namespace App\Models;
 
+use App\Models\Inventory;
 use Illuminate\Database\Eloquent\Model;
 
 class Medicine extends Model
 {
     protected $fillable = [
-        'code', 'name', 'generic_name', 'category', 
-        'manufacturer', 'dosage_form', 'strength', 'requires_prescription'
+        'code', 'commercial_name', 'dci', 
+        'category', 'laboratory', 'form', 
+        'dosage', 'prescription_required', 
+        'ppv', 'reorder_threshold'
     ];
 
-    public function inventory()
+    public function inventories()
     {
-        return $this->hasOne(Inventory::class);
+        return $this->hasMany(Inventory::class);
     }
 }

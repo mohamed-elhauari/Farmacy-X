@@ -35,7 +35,7 @@
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                        Ajouter des <span class="text-green-700 dark:text-green-600"> médicaments </span> au stock
+                        Ajouter des <span class="text-green-700 dark:text-green-600">médicaments</span> au stock
                     </h3>
                     <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -44,19 +44,45 @@
                         <span class="sr-only">Close modal</span>
                     </button>
                 </div>
+                
                 <!-- Modal body -->
-                <div class="p-4 md:p-5 space-y-4">
-
-                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="multiple_files">Importer le fichier CSV</label>
-                    <input class="p-2 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400" id="multiple_files" type="file" multiple>
-
-                </div>
-                <!-- Modal footer -->
-                <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                    <button data-modal-hide="default-modal" type="button" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Importer</button>
-                    <button data-modal-hide="default-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-green-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Annuler</button>
-                </div>
+                <form method="POST" action="{{ route('pharmacist.medicines.store') }}" enctype="multipart/form-data" id="importForm">
+                    @csrf
+                    <div class="p-4 md:p-5 space-y-4">
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="csv_file">
+                            Importer le fichier CSV
+                        </label>
+                        <input class="p-2 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400"
+                            id="csv_file" name="csv_file" type="file" accept=".csv" required>
+                        
+                        <!-- Add download template link -->
+                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                            <a href="#" class="text-green-600 hover:underline">Télécharger le modèle CSV</a>
+                        </p>
+                    </div>
+                    
+                    <!-- Modal footer -->
+                    <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                        <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                            Importer
+                        </button>
+                        <button type="button" data-modal-hide="default-modal" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-green-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                            Annuler
+                        </button>
+                    </div>
+                </form>
             </div>
+
+            <!-- Add this script to handle form submission -->
+            <script>
+                document.getElementById('importForm').addEventListener('submit', function(e) {
+                    const fileInput = document.getElementById('csv_file');
+                    if (fileInput.files.length === 0) {
+                        e.preventDefault();
+                        alert('Veuillez sélectionner un fichier CSV');
+                    }
+                });
+            </script>
         </div>
     </div>
 

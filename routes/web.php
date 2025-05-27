@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MedicineImportController;
 
 
 Route::get('/dashboard', function () {
@@ -37,10 +38,6 @@ Route::get('/medicines/cart', function () {
     return view('customer.medicines.cart');
 })->name('customer.medicines.cart');
 
-Route::get('/pharmacist/medicine/add', function () {
-    return view('pharmacist.medicines.add');
-})->name('pharmacist.medicines.add');
-
 Route::get('/pharmacist/medicine', function () {
     return view('pharmacist.medicines.index');
 })->name('pharmacist.medicines.index');
@@ -52,3 +49,11 @@ Route::get('/pharmacist/medicine/1', function () {
 Route::get('/pharmacist/medicine/add-infos', function () {
     return view('pharmacist.medicines.add-infos');
 })->name('pharmacist.medicines.add-infos');
+
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/medicine/add', [MedicineImportController::class, 'showImportForm'])->name('pharmacist.medicines.add');
+    Route::post('/medicine/import', [MedicineImportController::class, 'storeMedicines'])->name('pharmacist.medicines.store');
+
+});

@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('medicines', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique(); // Code CIP (Code Identifiant de Présentation) - unique pour chaque médicament
-            $table->string('nom_commercial'); // Ex: Doliprane
+            $table->string('commercial_name'); // Ex: Doliprane
             $table->string('dci')->nullable(); // Dénomination Commune Internationale (Paracétamol)
-            $table->enum('categorie', [
+            $table->enum('category', [
                 'Neurologique et psychiatrie',
                 'Antidouleur et anti-inflammatoire',
                 'Complément alimentaire',
@@ -28,8 +28,8 @@ return new class extends Migration
                 'Matériel médical',
                 'Produit vétérinaire'
             ]);
-            $table->string('laboratoire'); // Ex: SANOFI
-            $table->enum('forme', [
+            $table->string('laboratory'); // Ex: SANOFI
+            $table->enum('form', [
                 'Comprimé',
                 'Gélule',
                 'Sirop',
@@ -42,9 +42,9 @@ return new class extends Migration
                 'Autre'
             ]);
             $table->string('dosage')->nullable(); // Ex: 500mg, 20mg/ml
-            $table->boolean('sur_ordonnance')->default(false);
+            $table->boolean('prescription_required')->default(false);
             $table->decimal('ppv', 8, 2)->nullable(); // Prix Public de Vente
-            $table->integer('seuil_reappro')->default(10);
+            $table->integer('reorder_threshold')->default(20);
             $table->timestamps();
         });
 
@@ -52,9 +52,10 @@ return new class extends Migration
             $table->id();
             $table->string('lot'); // looooooot
             $table->foreignId('medicine_id')->constrained()->onDelete('cascade');
-            $table->integer('quantite');
-            $table->decimal('prix_achat', 8, 2); // Prix d'achat pour la pharmacie
-            $table->date('date_expiration')->nullable();
+            $table->integer('quantity');
+            $table->decimal('purchase_price', 8, 2); // Prix d'achat pour la pharmacie
+            $table->date('expiration_date')->nullable();
+            $table->string('dco')->nullable(); // "durée de conservation après ouverture" (DCO) eg. 2 mois
             $table->timestamps();
         });
     }
