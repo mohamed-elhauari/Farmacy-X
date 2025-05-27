@@ -38,12 +38,22 @@ class MedicineController extends Controller
         return view('pharmacist.medicines.add-infos', compact('medicine'));
     }
 
+    public function showMedicineInfos($code)
+    {
+        $medicine = Medicine::where('code', $code)->first();
+        
+        if (!$medicine) {
+            return redirect()->route('pharmacist.medicines.add')
+                ->with('error', 'Médicament non trouvé pour le code: ' . $code);
+        }
+
+        return view('pharmacist.medicines.show', compact('medicine'));
+    }
+
     public function indexPharmacist()
     {
-        $medicines = Medicine::all();
-        return view('pharmacist.medicines.index', compact(
-            'medicines'
-        ));
+        $medicines = Medicine::orderBy('commercial_name')->paginate(10);
+        return view('pharmacist.medicines.index', compact('medicines'));
     }
 
     public function showPharmacist($id)

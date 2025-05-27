@@ -57,7 +57,7 @@
             <svg class="mr-2 w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
             </svg>
-            <a href="">Ajouter un lot de ce médicament</a>
+            <a href="{{ route('pharmacist.medicines.add-infos', $medicine->code) }}">Ajouter un lot de ce médicament</a>
         </button>
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">

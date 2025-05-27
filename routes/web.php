@@ -50,7 +50,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/medicine/import-medicine', [MedicineImportController::class, 'storeMedicine'])->name('pharmacist.medicines.store-medicine');
 
     Route::get('/medicine/search', [MedicineController::class, 'search'])->name('pharmacist.medicines.add');
-    Route::get('/medicine/add-infos/{code}', [MedicineController::class, 'addInfos'])->name('pharmacist.medicines.add-infos');
 
 
     Route::get('/medicine/add', [MedicineController::class, 'showAddForm'])->name('pharmacist.medicines.add');
@@ -64,8 +63,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/pharmacist/medicines', [MedicineController::class, 'indexPharmacist'])->name('pharmacist.medicines.index');
 
-    Route::get('/pharmacist/medicine/{id}', [MedicineController::class, 'showPharmacist'])->name('pharmacist.medicines.show');
-
+    Route::get('/medicine/addd-infos/{code}', [MedicineController::class, 'showMedicineInfos'])->name('pharmacist.medicines.addd-infos');
 
 
 

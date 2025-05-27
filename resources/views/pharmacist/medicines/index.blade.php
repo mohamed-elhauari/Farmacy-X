@@ -65,7 +65,7 @@
                                 {{ $medicine->prescription_required ? 'Oui' : 'Non' }}
                             </td>
                             <td class="px-6 py-4 text-left">
-                                <a href="{{ route('pharmacist.medicines.show', $medicine->id) }}" class="font-medium text-green-600 dark:text-green-500 hover:underline">Voir</a>
+                                <a href="{{ route('pharmacist.medicines.addd-infos', $medicine->code) }}" class="font-medium text-green-600 dark:text-green-500 hover:underline">Voir</a>
                                 <a href="" class="font-medium text-green-600 dark:text-green-500 hover:underline">Modifier</a>
                             </td>
                         </tr>
@@ -78,6 +78,10 @@
                     @endforelse
                 </tbody>
             </table>
+            <!-- Pagination -->
+            <div class="my-2 mx-4">
+                {{ $medicines->links() }}
+            </div>
         </div>
 
 
