@@ -143,7 +143,7 @@
                                     <a href="{{ route('pharmacist.medicines.add') }}" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Ajouter un médicament</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Ajouter au stock</a>
+                                    <a href="{{ route('pharmacist.medicines.add') }}" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Ajouter au stock</a>
                                 </li>
                                 <li>
                                     <a href="#" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Mdc. en stock faible</a>
