@@ -11,10 +11,12 @@ use League\Csv\Reader;
 
 class MedicineImportController extends Controller
 {
-    public function showImportForm()
+    /*
+    public function showImportForm(Request $request)
     {
         return view('pharmacist.medicines.add');
     }
+        */
 
     public function storeMedicines(Request $request)
     {

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\MedicineImportController;
 
 
@@ -46,14 +47,19 @@ Route::get('/pharmacist/medicine/1', function () {
     return view('pharmacist.medicines.show');
 })->name('pharmacist.medicines.show');
 
-Route::get('/pharmacist/medicine/add-infos', function () {
-    return view('pharmacist.medicines.add-infos');
-})->name('pharmacist.medicines.add-infos');
-
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/medicine/add', [MedicineImportController::class, 'showImportForm'])->name('pharmacist.medicines.add');
+    //Route::get('/medicine/add', [MedicineImportController::class, 'showImportForm'])->name('pharmacist.medicines.add');
     Route::post('/medicine/import', [MedicineImportController::class, 'storeMedicines'])->name('pharmacist.medicines.store');
+
+    Route::get('/medicine/search', [MedicineController::class, 'search'])->name('pharmacist.medicines.add');
+    Route::get('/medicine/add-infos/{code}', [MedicineController::class, 'addInfos'])->name('pharmacist.medicines.add-infos');
+
+
+    Route::get('/medicine/add', [MedicineController::class, 'showAddForm'])->name('pharmacist.medicines.add');
+    Route::post('/medicine/search', [MedicineController::class, 'searchMedicine'])->name('pharmacist.medicines.search');
+    Route::get('/medicine/add-infos/{code}', [MedicineController::class, 'showMedicineInfo'])->name('pharmacist.medicines.add-infos');
+
 
 });
