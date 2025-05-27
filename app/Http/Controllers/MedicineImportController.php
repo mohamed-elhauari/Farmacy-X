@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Builders\MedicineBuilder\MedicineBuilder;
-use App\Builders\InventoryBuilder\InventoryBuilder;
+use DateTime;
+use League\Csv\Reader;
 use App\Models\Medicine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use League\Csv\Reader;
+use App\Builders\MedicineBuilder\MedicineBuilder;
+use App\Builders\InventoryBuilder\InventoryBuilder;
 
 class MedicineImportController extends Controller
 {
@@ -82,6 +83,38 @@ class MedicineImportController extends Controller
                 ->with('error', 'Erreur lors de l\'import: '.$e->getMessage());
         }
     }
+
+    public function storeMedicine(Request $request)
+    {
+        $validated = $request->validate([
+            'medicine_id' => 'required|exists:medicines,id',
+            'lot' => 'required|string|max:255',
+            'quantity' => 'required|integer|min:1',
+            'purchase_price' => 'required|numeric|min:0',
+            'expiration_date' => 'required|date|after:today',
+            'dco' => 'required|string|max:255',
+        ]);
+
+        $medicine = Medicine::findOrFail($validated['medicine_id']);
+
+        try {
+            (new InventoryBuilder())
+                ->forMedicine($medicine)
+                ->setLot($validated['lot'])
+                ->setQuantity($validated['quantity'])
+                ->setPurchasePrice($validated['purchase_price'])
+                ->setExpirationDate(new DateTime($validated['expiration_date']))
+                ->setDco($validated['dco'])
+                ->build()
+                ->save();
+
+            return redirect()->back()->with('success', 'Le stock a été ajouté avec succès.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Erreur lors de l\'ajout au stock : ' . $e->getMessage());
+        }
+    }
+
+    // newwwwwwwwwwwwwwwwww
 
     public function storeMedicinesNew(Request $request)
     {

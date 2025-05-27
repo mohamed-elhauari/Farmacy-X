@@ -17,9 +17,6 @@
                             Code
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Quantité
-                        </th>
-                        <th scope="col" class="px-6 py-3">
                             Seuil
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -44,36 +41,41 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            10010001000
-                        </th>
-                        <td class="px-6 py-4">
-                            199
-                        </td>
-                        <td class="px-6 py-4">
-                            50
-                        </td>
-                        <td class="px-6 py-4">
-                            Doliprane
-                        </td>
-                        <td class="px-6 py-4">
-                            Paracétamol
-                        </td>
-                        <td class="px-6 py-4">
-                            Antidouleur et anti-inflammatoire
-                        </td>
-                        <td class="px-6 py-4">
-                            Comprimé / 1000mg
-                        </td>
-                        <td class="px-6 py-4">
-                            Non
-                        </td>
-                        <td class="px-6 py-4 text-left">
-                            <a href="{{ route('pharmacist.medicines.show') }}" class="font-medium text-green-600 dark:text-green-500 hover:underline">Voir</a>
-                            <a href="#" class="font-medium text-green-600 dark:text-green-500 hover:underline">Modifier</a>
-                        </td>
-                    </tr>
+                    @forelse($medicines as $medicine)
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ $medicine->code }}
+                            </th>
+                            <td class="px-6 py-4">
+                                {{ $medicine->reorder_threshold }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $medicine->commercial_name }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $medicine->dci }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $medicine->category }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $medicine->form }} / {{ $medicine->dosage }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $medicine->prescription_required ? 'Oui' : 'Non' }}
+                            </td>
+                            <td class="px-6 py-4 text-left">
+                                <a href="{{ route('pharmacist.medicines.show', $medicine->id) }}" class="font-medium text-green-600 dark:text-green-500 hover:underline">Voir</a>
+                                <a href="" class="font-medium text-green-600 dark:text-green-500 hover:underline">Modifier</a>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="8" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">
+                                Aucun médicament trouvé.
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

@@ -19,29 +19,29 @@
 
         <div class="w-full sm:w-[512px]">
 
-            <h1 class="mb-4 mt-8 md:mt-2 text-start text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Doliprane,<span class="text-green-600 dark:text-green-500"> (Paracétamol - SANOFI)</span></h1>
+            <h1 class="mb-4 mt-8 md:mt-2 text-start text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">{{ $medicine->commercial_name }},<span class="text-green-600 dark:text-green-500"> ({{ $medicine->dci }} - {{ $medicine->laboratory }})</span></h1>
 
             <ul class="max-w-md space-y-1 text-gray-500 list-none list-inside dark:text-gray-400">
                 <li>
-                    <b class="text-gray-600 dark:text-gray-300">Code :</b> 1001001001
+                    <b class="text-gray-600 dark:text-gray-300">Code :</b> {{ $medicine->code }}
                 </li>
                 <li>
-                    <b class="text-gray-600 dark:text-gray-300">Forme :</b> Comprimé
+                    <b class="text-gray-600 dark:text-gray-300">Forme :</b> {{ $medicine->form }}
                 </li>
                 <li>
-                    <b class="text-gray-600 dark:text-gray-300">Dosage :</b> 1000mg
+                    <b class="text-gray-600 dark:text-gray-300">Dosage :</b> {{ $medicine->dosage }}
                 </li>
                 <li>
-                    <b class="text-gray-600 dark:text-gray-300">Catégorie :</b> Antidouleur et anti-inflammatoire
+                    <b class="text-gray-600 dark:text-gray-300">Catégorie :</b> {{ $medicine->category }}
                 </li>
                 <li>
-                    <b class="text-gray-600 dark:text-gray-300">Statut :</b> Disponible sans ordonnance
+                    <b class="text-gray-600 dark:text-gray-300">Statut :</b> Disponible {{ $medicine->prescription_required ? 'avec ordonnance' : 'sans ordonnance' }}
                 </li>
                 <li>
-                    <b class="text-gray-600 dark:text-gray-300">Prix Public (PPV) :</b> 15.50 MAD
+                    <b class="text-gray-600 dark:text-gray-300">Prix Public (PPV) :</b> {{ $medicine->ppv }}
                 </li>
                 <li>
-                    <b class="text-gray-600 dark:text-gray-300">Seuil :</b> 50 pièces
+                    <b class="text-gray-600 dark:text-gray-300">Seuil :</b> {{ $medicine->reorder_threshold }} pièces
                 </li>
             </ul>
 

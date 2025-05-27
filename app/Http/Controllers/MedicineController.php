@@ -38,4 +38,19 @@ class MedicineController extends Controller
         return view('pharmacist.medicines.add-infos', compact('medicine'));
     }
 
+    public function indexPharmacist()
+    {
+        $medicines = Medicine::all();
+        return view('pharmacist.medicines.index', compact(
+            'medicines'
+        ));
+    }
+
+    public function showPharmacist($id)
+    {
+        $medicine = Medicine::findOrFail($id);
+
+        return view('pharmacist.medicines.show', compact('medicine'));
+    }
+
 }

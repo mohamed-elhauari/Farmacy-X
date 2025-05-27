@@ -51,9 +51,10 @@
 
     <div class=" pb-12 pt-6 px-4 lg:px-12 xl:px-24 ">
         
-        <form method="POST" action="" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('pharmacist.medicines.store-medicine') }}" enctype="multipart/form-data">
             @csrf
             <div class="grid gap-6 mb-6 md:grid-cols-2">
+                <input type="hidden" name="medicine_id" value="{{ $medicine->id }}">
                 <div>
                     <label for="lot" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nº lot</label>
                     <input name="lot" type="text" id="lot" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="lot-99" required />
@@ -72,7 +73,7 @@
                 </div>
                 <div>
                     <label for="dco" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DCO (Consérvation après Ouverture)</label>
-                    <input name="dco" type="text" id="dco" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="6 mois" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
+                    <input name="dco" type="text" id="dco" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="6 mois" required />
                 </div>
                 <button type="submit" class="md:col-span-2 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Ajouter au stock</button>
             </div>

@@ -103,28 +103,7 @@
                         <li>
                             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
                         </li>
-                        <li>
-                            <button type="button" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-cmd" data-collapse-toggle="dropdown-cmd">
-                                <svg class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
-                                </svg>
-                                <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Commandes</span>
-                                <svg class="w-3 h-3 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                                </svg>
-                            </button>
-                            <ul id="dropdown-cmd" class="hidden py-2 space-y-2">
-                                <li>
-                                    <a href="#" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Liste des commandes</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Commandes en attente</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Commandes validées</a>
-                                </li>
-                            </ul>
-                        </li>
+                        
                         <li>
                             <button type="button" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-mdc" data-collapse-toggle="dropdown-mdc">
                                 <svg class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -156,6 +135,30 @@
                                 </li>
                             </ul>
                         </li>
+
+                        <li>
+                            <button type="button" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-cmd" data-collapse-toggle="dropdown-cmd">
+                                <svg class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
+                                </svg>
+                                <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Commandes</span>
+                                <svg class="w-3 h-3 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                </svg>
+                            </button>
+                            <ul id="dropdown-cmd" class="hidden py-2 space-y-2">
+                                <li>
+                                    <a href="#" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Liste des commandes</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Commandes en attente</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Commandes validées</a>
+                                </li>
+                            </ul>
+                        </li>
+
                         <li>
                             <button type="button" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-reports" data-collapse-toggle="dropdown-reports">
                                 <svg class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
