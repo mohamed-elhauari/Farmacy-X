@@ -30,7 +30,7 @@
                     <a href="{{ route('customer.medicines.show') }}">
                         <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Doliprane, (Paracétamol - SANOFI)</h5>
                     </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Comprimé 1000mg. <br>Catégorie : Antidouleur et anti-inflammatoire. <br>Sans ordonnance</p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Comprimé 1000mg. <br>Catégorie : Antidouleur et anti-inflammatoire. <br>Sans ordonnance <br>Prix : 19.9 MAD</p>
                 </div>
             </div>
 
@@ -42,7 +42,7 @@
                     <a href="{{ route('customer.medicines.show') }}">
                         <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Doliprane, (Paracétamol - SANOFI)</h5>
                     </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Comprimé 1000mg. <br>Catégorie : Antidouleur et anti-inflammatoire. <br>Sans ordonnance</p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Comprimé 1000mg. <br>Catégorie : Antidouleur et anti-inflammatoire. <br>Sans ordonnance <br>Prix : 19.9 MAD</p>
                 </div>
             </div>
 
@@ -54,79 +54,7 @@
                     <a href="{{ route('customer.medicines.show') }}">
                         <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Doliprane, (Paracétamol - SANOFI)</h5>
                     </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Comprimé 1000mg. <br>Catégorie : Antidouleur et anti-inflammatoire. <br>Sans ordonnance</p>
-                </div>
-            </div>
-
-            <div class="w-full bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
-                <a href="{{ route('customer.medicines.show') }}">
-                    <img class="rounded-t-lg" src="https://farmaciaherrera.com.mx/cdn/shop/files/7503004908691_a7cc7ac7-82e6-4e4a-9e90-cbd53f3e498b.jpg?v=1726159948" alt="" />
-                </a>
-                <div class="p-5">
-                    <a href="{{ route('customer.medicines.show') }}">
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Doliprane, (Paracétamol - SANOFI)</h5>
-                    </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Comprimé 1000mg. <br>Catégorie : Antidouleur et anti-inflammatoire. <br>Sans ordonnance</p>
-                </div>
-            </div>
-
-            <div class="w-full bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
-                <a href="{{ route('customer.medicines.show') }}">
-                    <img class="rounded-t-lg" src="https://farmaciaherrera.com.mx/cdn/shop/files/7503004908691_a7cc7ac7-82e6-4e4a-9e90-cbd53f3e498b.jpg?v=1726159948" alt="" />
-                </a>
-                <div class="p-5">
-                    <a href="{{ route('customer.medicines.show') }}">
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Doliprane, (Paracétamol - SANOFI)</h5>
-                    </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Comprimé 1000mg. <br>Catégorie : Antidouleur et anti-inflammatoire. <br>Sans ordonnance</p>
-                </div>
-            </div>
-
-            <div class="w-full bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
-                <a href="{{ route('customer.medicines.show') }}">
-                    <img class="rounded-t-lg" src="https://farmaciaherrera.com.mx/cdn/shop/files/7503004908691_a7cc7ac7-82e6-4e4a-9e90-cbd53f3e498b.jpg?v=1726159948" alt="" />
-                </a>
-                <div class="p-5">
-                    <a href="{{ route('customer.medicines.show') }}">
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Doliprane, (Paracétamol - SANOFI)</h5>
-                    </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Comprimé 1000mg. <br>Catégorie : Antidouleur et anti-inflammatoire. <br>Sans ordonnance</p>
-                </div>
-            </div>
-
-            <div class="w-full bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
-                <a href="{{ route('customer.medicines.show') }}">
-                    <img class="rounded-t-lg" src="https://farmaciaherrera.com.mx/cdn/shop/files/7503004908691_a7cc7ac7-82e6-4e4a-9e90-cbd53f3e498b.jpg?v=1726159948" alt="" />
-                </a>
-                <div class="p-5">
-                    <a href="{{ route('customer.medicines.show') }}">
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Doliprane, (Paracétamol - SANOFI)</h5>
-                    </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Comprimé 1000mg. <br>Catégorie : Antidouleur et anti-inflammatoire. <br>Sans ordonnance</p>
-                </div>
-            </div>
-
-            <div class="w-full bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
-                <a href="{{ route('customer.medicines.show') }}">
-                    <img class="rounded-t-lg" src="https://farmaciaherrera.com.mx/cdn/shop/files/7503004908691_a7cc7ac7-82e6-4e4a-9e90-cbd53f3e498b.jpg?v=1726159948" alt="" />
-                </a>
-                <div class="p-5">
-                    <a href="{{ route('customer.medicines.show') }}">
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Doliprane, (Paracétamol - SANOFI)</h5>
-                    </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Comprimé 1000mg. <br>Catégorie : Antidouleur et anti-inflammatoire. <br>Sans ordonnance</p>
-                </div>
-            </div>
-
-            <div class="w-full bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
-                <a href="{{ route('customer.medicines.show') }}">
-                    <img class="rounded-t-lg" src="https://farmaciaherrera.com.mx/cdn/shop/files/7503004908691_a7cc7ac7-82e6-4e4a-9e90-cbd53f3e498b.jpg?v=1726159948" alt="" />
-                </a>
-                <div class="p-5">
-                    <a href="{{ route('customer.medicines.show') }}">
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Doliprane, (Paracétamol - SANOFI)</h5>
-                    </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Comprimé 1000mg. <br>Catégorie : Antidouleur et anti-inflammatoire. <br>Sans ordonnance</p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Comprimé 1000mg. <br>Catégorie : Antidouleur et anti-inflammatoire. <br>Sans ordonnance <br>Prix : 19.9 MAD</p>
                 </div>
             </div>
             
