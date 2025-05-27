@@ -55,10 +55,6 @@
                         <input class="p-2 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400"
                             id="csv_file" name="csv_file" type="file" accept=".csv" required>
                         
-                        <!-- Add download template link -->
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                            <a href="#" class="text-green-600 hover:underline">Télécharger le modèle CSV</a>
-                        </p>
                     </div>
                     
                     <!-- Modal footer -->

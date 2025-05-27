@@ -26,26 +26,42 @@ class MedicineImportController extends Controller
             DB::transaction(function () use ($request) {
                 $csv = Reader::createFromPath($request->file('csv_file')->getRealPath());
                 $csv->setHeaderOffset(0);
+                $data = iterator_to_array($csv->getRecords());
 
-                $records = $csv->getRecords();
-                $data = iterator_to_array($records);
+                $referencePath = storage_path('app/public/medicines.csv');
+                $referenceCsv = Reader::createFromPath($referencePath);
+                $referenceCsv->setHeaderOffset(0);
+                $referenceData = iterator_to_array($referenceCsv->getRecords());
+
+                $referenceMap = [];
+                foreach ($referenceData as $ref) {
+                    $referenceMap[$ref['code']] = $ref;
+                }
 
                 foreach ($data as $record) {
 
-                    $medicine = Medicine::where('code', $record['code'])->first();
+                    $code = $record['code'];
+                    // Check if reference data for this code exists
+                    if (!isset($referenceMap[$code])) {
+                        throw new \Exception("Code $code not found in reference file.");
+                    }
+
+                    $ref = $referenceMap[$code];
+
+                    $medicine = Medicine::where('code', $code)->first();
 
                     if (!$medicine) {
                         $medicine = (new MedicineBuilder())
-                            ->setCode($record['code'])
-                            ->setCommercialName($record['commercial_name'])
-                            ->setDci($record['dci'])
-                            ->setCategory($record['category'])
-                            ->setLaboratory($record['laboratory'])
-                            ->setForm($record['form'])
-                            ->setDosage($record['dosage'])
-                            ->setPrescriptionRequired((bool)$record['prescription_required'])
-                            ->setPpv($record['ppv'])
-                            ->setReorderThreshold($record['reorder_threshold'])
+                            ->setCode($ref['code'])
+                            ->setCommercialName($ref['commercial_name'])
+                            ->setDci($ref['dci'])
+                            ->setCategory($ref['category'])
+                            ->setLaboratory($ref['laboratory'])
+                            ->setForm($ref['form'])
+                            ->setDosage($ref['dosage'])
+                            ->setPrescriptionRequired((bool)$ref['prescription_required'])
+                            ->setPpv($ref['ppv'])
+                            ->setReorderThreshold($ref['reorder_threshold'])
                             ->build();
                         $medicine->save();
                     }
