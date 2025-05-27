@@ -11,12 +11,6 @@ use League\Csv\Reader;
 
 class MedicineImportController extends Controller
 {
-    /*
-    public function showImportForm(Request $request)
-    {
-        return view('pharmacist.medicines.add');
-    }
-        */
 
     public function storeMedicines(Request $request)
     {
@@ -81,11 +75,120 @@ class MedicineImportController extends Controller
             });
 
             return redirect()->back()
+                ->with('success', 'Médicaments importés au stock avec succès!');
+
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->with('error', 'Erreur lors de l\'import: '.$e->getMessage());
+        }
+    }
+
+    public function storeMedicinesNew(Request $request)
+    {
+        $request->validate([
+            'csv_file' => 'required|file|mimes:csv,txt'
+        ]);
+
+        try {
+            DB::transaction(function () use ($request) {
+                $csv = Reader::createFromPath($request->file('csv_file')->getRealPath());
+                $csv->setHeaderOffset(0);
+                $data = iterator_to_array($csv->getRecords());
+
+                foreach ($data as $record) {
+
+                    $medicine = Medicine::where('code', $record['code'])->first();
+
+                    if (!$medicine) {
+                        $medicine = (new MedicineBuilder())
+                            ->setCode($record['code'])
+                            ->setCommercialName($record['commercial_name'])
+                            ->setDci($record['dci'])
+                            ->setCategory($record['category'])
+                            ->setLaboratory($record['laboratory'])
+                            ->setForm($record['form'])
+                            ->setDosage($record['dosage'])
+                            ->setPrescriptionRequired((bool)$record['prescription_required'])
+                            ->setPpv($record['ppv'])
+                            ->setReorderThreshold($record['reorder_threshold'])
+                            ->build();
+                        $medicine->save();
+                    }
+                }
+            });
+
+            return redirect()->back()
                 ->with('success', 'Médicaments importés avec succès!');
 
         } catch (\Exception $e) {
             return redirect()->back()
                 ->with('error', 'Erreur lors de l\'import: '.$e->getMessage());
+        }
+    }
+
+    public function storeMedicineNew(Request $request)
+    {
+        $request->validate([
+            'code' => 'required|string|min:3'
+        ]);
+
+        $code = $request->input('code');
+
+        try {
+            DB::transaction(function () use ($code) {
+                // Path to the reference medecines file
+                $referencePath = storage_path('app/public/medicines.csv');
+
+                // Check if file exists
+                if (!file_exists($referencePath) || !is_readable($referencePath)) {
+                    throw new \Exception("Le fichier des médicaments est introuvable ou illisible.");
+                }
+
+                // Read the CSV
+                $csv = Reader::createFromPath($referencePath);
+                $csv->setHeaderOffset(0);
+                $records = iterator_to_array($csv->getRecords());
+
+                // Search for the medicine by code
+                $matchedRecord = null;
+                foreach ($records as $record) {
+                    if ($record['code'] === $code) {
+                        $matchedRecord = $record;
+                        break;
+                    }
+                }
+
+                if (!$matchedRecord) {
+                    throw new \Exception("Aucun médicament trouvé avec le code: $code");
+                }
+
+                // Check if the medicine already exists
+                if (Medicine::where('code', $code)->exists()) {
+                    throw new \Exception("Le médicament avec ce code existe déjà.");
+                }
+
+                // Build and save the new medicine
+                $medicine = (new MedicineBuilder())
+                    ->setCode($matchedRecord['code'])
+                    ->setCommercialName($matchedRecord['commercial_name'])
+                    ->setDci($matchedRecord['dci'])
+                    ->setCategory($matchedRecord['category'])
+                    ->setLaboratory($matchedRecord['laboratory'])
+                    ->setForm($matchedRecord['form'])
+                    ->setDosage($matchedRecord['dosage'])
+                    ->setPrescriptionRequired((bool)$matchedRecord['prescription_required'])
+                    ->setPpv($matchedRecord['ppv'])
+                    ->setReorderThreshold($matchedRecord['reorder_threshold'])
+                    ->build();
+                $medicine->save();
+            });
+
+            return redirect()->back()
+                ->with('success', 'Médicament ajouté avec succès !');
+
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->with('error', 'Erreur : '.$e->getMessage());
         }
     }
 

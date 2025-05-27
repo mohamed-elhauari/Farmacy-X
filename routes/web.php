@@ -50,7 +50,6 @@ Route::get('/pharmacist/medicine/1', function () {
 
 Route::middleware(['auth'])->group(function () {
 
-    //Route::get('/medicine/add', [MedicineImportController::class, 'showImportForm'])->name('pharmacist.medicines.add');
     Route::post('/medicine/import', [MedicineImportController::class, 'storeMedicines'])->name('pharmacist.medicines.store');
 
     Route::get('/medicine/search', [MedicineController::class, 'search'])->name('pharmacist.medicines.add');
@@ -60,6 +59,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/medicine/add', [MedicineController::class, 'showAddForm'])->name('pharmacist.medicines.add');
     Route::post('/medicine/search', [MedicineController::class, 'searchMedicine'])->name('pharmacist.medicines.search');
     Route::get('/medicine/add-infos/{code}', [MedicineController::class, 'showMedicineInfo'])->name('pharmacist.medicines.add-infos');
+
+    Route::get('/medicine/add-new', [MedicineController::class, 'showAddFormNew'])->name('pharmacist.medicines.add-new');
+    Route::post('/medicine/import-new', [MedicineImportController::class, 'storeMedicinesNew'])->name('pharmacist.medicines.store-new');
+    Route::post('/medicine/import-medicine-new', [MedicineImportController::class, 'storeMedicineNew'])->name('pharmacist.medicines.store-medicine-new');
+
 
 
 });

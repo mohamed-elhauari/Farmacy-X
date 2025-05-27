@@ -12,6 +12,11 @@ class MedicineController extends Controller
         return view('pharmacist.medicines.add');
     }
 
+    public function showAddFormNew()
+    {
+        return view('pharmacist.medicines.add-new');
+    }
+
     public function searchMedicine(Request $request)
     {
         $request->validate([
