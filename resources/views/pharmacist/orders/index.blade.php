@@ -1,19 +1,18 @@
-<x-app-customer-layout>
+<x-app-dashboard-layout>
 
-    <div class="min-h-[calc(100vh-4rem)] place-items-center px-6 xl:px-24 py-10 sm:py-14 bg-white md:py-24 dark:bg-gray-900">
+    <div class="min-h-[calc(100vh-12rem)]">
+
         
-        <h3 class="text-3xl font-bold dark:text-white mb-8 md:mb-12">Mes <span class="text-green-600 dark:text-green-500">commandes</span></h3>
+        <h2 class="text-4xl font-bold dark:text-white mb-8 mt-12">Liste des <span class="text-green-700 dark:text-green-600">médicaments</span></h2>
 
-       
 
-        <!-- Orders -->
-        
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table class="min-w-full lg:w-[1080px] text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Commande ID
+                            Client / Commande ID
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Médicaments
@@ -25,15 +24,18 @@
                             Statut
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Date de commande
+                            Date commande
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Actions
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($orders as $order)
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    @forelse($orders as $order)
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                #CMD{{ $order->id }}
+                                {{ $order->customer->name }} <br> #CMD{{ $order->id }}
                             </th>
                             <td class="px-6 py-4">
                                 @foreach ($order->items as $item)
@@ -59,19 +61,30 @@
                             <td class="px-6 py-4">
                                 {{ $order->created_at->format('d-m-Y') }}
                             </td>
+                            <td class="px-6 py-4 text-left">
+                                <div class="flex flex-col space-y-1">
+                                    <a href="" class="font-medium text-green-600 dark:text-green-500 hover:underline">Accepter</a>
+                                    <a href="" class="font-medium text-green-600 dark:text-green-500 hover:underline">Refuser</a>
+                                    <a href="" class="font-medium text-green-600 dark:text-green-500 hover:underline">Completer</a>
+                                </div>
+                            </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">
-                                Aucune commande trouvée.
+                            <td colspan="6" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">
+                                Aucun médicament trouvé.
                             </td>
                         </tr>
                     @endforelse
                 </tbody>
             </table>
+            <!-- Pagination -->
+            <div class="my-2 mx-4">
+                {{ $orders->links() }}
+            </div>
         </div>
 
-        
+
     </div>
 
-</x-app-customer-layout>
+</x-app-dashboard-layout>

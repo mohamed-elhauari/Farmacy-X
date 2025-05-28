@@ -43,6 +43,8 @@ Route::get('/medicines/{id}', [MedicineController::class, 'show'])->name('custom
 
 
 Route::get('/my-orders', [OrderController::class, 'indexMyOrders'])->name('customer.orders.index');
+Route::get('/pharmacist/orders', [OrderController::class, 'indexOrders'])->name('pharmacist.orders.index');
+
 
 
 
