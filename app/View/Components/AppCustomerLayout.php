@@ -2,8 +2,9 @@
 
 namespace App\View\Components;
 
-use Illuminate\View\Component;
+use App\Models\Medicine;
 use Illuminate\View\View;
+use Illuminate\View\Component;
 
 class AppCustomerLayout extends Component
 {
@@ -12,6 +13,7 @@ class AppCustomerLayout extends Component
      */
     public function render(): View
     {
-        return view('layouts.app-customer');
+        $categories = Medicine::select('category')->distinct()->pluck('category');
+        return view('layouts.app-customer', compact('categories'));
     }
 }

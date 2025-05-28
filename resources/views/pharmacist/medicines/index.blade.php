@@ -10,7 +10,7 @@
             <!-- Filter by Category -->
             <select name="category" class="px-4 py-2 pr-10 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-green-500">
                 <option value="">Toutes les catégories</option>
-                @foreach($categories as $category)
+                @foreach($categories->sort() as $category)
                     <option value="{{ $category }}" 
                         {{ request('category') == $category ? 'selected' : '' }}>
                         {{ $category }}

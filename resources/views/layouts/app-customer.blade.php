@@ -109,67 +109,35 @@
 
                 <!-- Dropdown menu -->
                 <div id="mega-menu-full-dropdown" class="hidden mt-1 bg-white border-gray-200 shadow-xs border-y dark:bg-gray-800 dark:border-gray-600">
-                    <div class="grid max-w-screen-xl px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:grid-cols-3 md:px-6">
-                        <ul aria-labelledby="mega-menu-full-dropdown-button">
-                            <li>
-                                <a href="{{ route('customer.medicines.index') }}" class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="font-semibold text-green-700 dark:text-green-600">Toutes les médicaments</div>
-                                    <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="font-semibold">Antidouleur et anti-inflammatoire</div>
-                                    <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="font-semibold">Neurologique et psychiatrie</div>
-                                    <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="grid max-w-screen-xl px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:grid-cols-4 md:px-6">
+                        @php
+                            $sortedCategories = $categories->sort()->values();
+                            $chunks = $sortedCategories->chunk(3);
+                        @endphp
                         <ul>
                             <li>
-                                <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="font-semibold">Complément alimentaire</div>
-                                    <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="font-semibold">Produit dermatologique</div>
-                                    <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="font-semibold">Médicament cardiovasculaire</div>
-                                    <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
-                                </a>
+                                <form method="GET" action="{{ route('customer.medicines.index') }}">
+                                    <button type="submit" class="block w-full text-left p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                        <div class="font-semibold">Tous les catégories</div>
+                                    </button>
+                                </form>
                             </li>
                         </ul>
-                        <ul class="hidden md:block">
-                            <li>
-                                <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="font-semibold">Antibiotique</div>
-                                    <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="font-semibold">Antidouleur</div>
-                                    <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
-                                    <div class="font-semibold">Produit pédiatrique</div>
-                                    <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
-                                </a>
-                            </li>
-                        </ul>
+                        @foreach($chunks as $chunk)
+                            <ul>
+                                @foreach($chunk as $category)
+                                    <li>
+                                        <form method="GET" action="{{ route('customer.medicines.index') }}">
+                                            <input type="hidden" name="category" value="{{ $category }}">
+                                            <button type="submit" class="block w-full text-left p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                                <div class="font-semibold">{{ $category }}</div>
+                                            </button>
+                                        </form>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endforeach
+                        
                     </div>
                 </div>
             </nav>
