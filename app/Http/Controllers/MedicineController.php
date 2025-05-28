@@ -94,7 +94,7 @@ class MedicineController extends Controller
 
         $query = $context->applySort($query, $direction);
 
-        $medicines = $query->paginate(10);
+        $medicines = $query->paginate(10)->appends($request->query());
 
         $categories = Medicine::select('category')->distinct()->pluck('category');
 
