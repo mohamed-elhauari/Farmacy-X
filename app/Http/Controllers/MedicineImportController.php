@@ -75,7 +75,7 @@ class MedicineImportController extends Controller
                 }
             });
 
-            return redirect()->back()
+            return redirect()->route('pharmacist.medicines.index')
                 ->with('success', 'Médicaments importés au stock avec succès!');
 
         } catch (\Exception $e) {
@@ -91,7 +91,7 @@ class MedicineImportController extends Controller
             'lot' => 'required|string|max:255',
             'quantity' => 'required|integer|min:1',
             'purchase_price' => 'required|numeric|min:0',
-            'expiration_date' => 'required|date|after:today',
+            'expiration_date' => 'required|date',
             'dco' => 'required|string|max:255',
         ]);
 
@@ -108,7 +108,7 @@ class MedicineImportController extends Controller
                 ->build()
                 ->save();
 
-            return redirect()->back()->with('success', 'Le stock a été ajouté avec succès.');
+            return redirect()->route('pharmacist.medicines.addd-infos', $medicine->code)->with('success', 'Le stock a été ajouté avec succès.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Erreur lors de l\'ajout au stock : ' . $e->getMessage());
         }
@@ -150,7 +150,7 @@ class MedicineImportController extends Controller
                 }
             });
 
-            return redirect()->back()
+            return redirect()->route('pharmacist.medicines.index')
                 ->with('success', 'Médicaments importés avec succès!');
 
         } catch (\Exception $e) {
@@ -216,7 +216,7 @@ class MedicineImportController extends Controller
                 $medicine->save();
             });
 
-            return redirect()->back()
+            return redirect()->route('pharmacist.medicines.addd-infos', $code)
                 ->with('success', 'Médicament ajouté avec succès !');
 
         } catch (\Exception $e) {
