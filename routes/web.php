@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\MedicineImportController;
@@ -36,6 +37,22 @@ Route::get('/medicines/cart', function () {
 
 Route::get('/medicines', [MedicineController::class, 'index'])->name('customer.medicines.index');
 Route::get('/medicines/{id}', [MedicineController::class, 'show'])->name('customer.medicines.show');
+
+
+
+
+
+
+
+
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/order/create', [CartController::class, 'createOrder'])->name('order.create');
+
+
+
+
+
+
 
 
 Route::middleware(['auth'])->group(function () {

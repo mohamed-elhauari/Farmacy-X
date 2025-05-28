@@ -1,6 +1,6 @@
 <x-app-customer-layout>
 
-    <section class="min-h-[calc(100vh-4rem)] antialiased flex flex-col md:flex-row items-center justify-center py-16 px-4 lg:px-12 xl:px-24 md:py-32 bg-white dark:bg-gray-900 md:gap-6 transition-all duration-300">
+    <section class="min-h-[calc(100vh-4rem)] antialiased flex hidden flex-col md:flex-row items-center justify-center py-16 px-4 lg:px-12 xl:px-24 md:py-32 bg-white dark:bg-gray-900 md:gap-6 transition-all duration-300">
 
         <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
             <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Mon panier</h2>
@@ -146,6 +146,18 @@
             </div>
 
         </div>
+
+    </section>
+
+
+    <section class="min-h-[calc(100vh-4rem)] antialiased flex flex-col md:flex-row items-center justify-center py-16 px-4 lg:px-12 xl:px-24 md:py-32 bg-white dark:bg-gray-900 md:gap-6 transition-all duration-300">
+
+        <form method="POST" action="{{ route('order.create') }}" enctype="multipart/form-data">
+            @csrf
+            <label>Ordonnance (si nécessaire)</label>
+            <input type="file" name="prescription">
+            <button type="submit">Confirmer la commande</button>
+        </form>
 
     </section>
 
