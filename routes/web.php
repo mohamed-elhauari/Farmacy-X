@@ -27,13 +27,6 @@ Route::get('/', function () {
     return view('customer.welcome');
 })->name('customer.welcome');
 
-Route::get('/medicines', function () {
-    return view('customer.medicines.index');
-})->name('customer.medicines.index');
-
-Route::get('/medicines/1', function () {
-    return view('customer.medicines.show');
-})->name('customer.medicines.show');
 
 Route::get('/medicines/cart', function () {
     return view('customer.medicines.cart');
@@ -41,7 +34,8 @@ Route::get('/medicines/cart', function () {
 
 
 
-
+Route::get('/medicines', [MedicineController::class, 'index'])->name('customer.medicines.index');
+Route::get('/medicines/{id}', [MedicineController::class, 'show'])->name('customer.medicines.show');
 
 
 Route::middleware(['auth'])->group(function () {

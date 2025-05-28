@@ -21,20 +21,25 @@
 
         <div class="w-full sm:w-[512px]">
 
-            <h1 class="mb-4 mt-8 md:mt-2 text-start text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Doliprane,<span class="text-green-600 dark:text-green-500"> (Paracétamol - SANOFI)</span></h1>
+            <h1 class="mb-4 mt-8 md:mt-2 text-start text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">{{ $medicine->commercial_name }},<span class="text-green-600 dark:text-green-500"> ({{ $medicine->dci }} - {{ $medicine->laboratory }})</span></h1>
 
             <ul class="max-w-md space-y-1 text-gray-500 list-none list-inside dark:text-gray-400">
                 <li>
-                    <b class="text-gray-600 dark:text-gray-300">Type :</b> Comprimé 1000mg
+                    <b class="text-gray-600 dark:text-gray-300">Type :</b> {{ $medicine->form }} {{ $medicine->dosage }}
                 </li>
                 <li>
-                    <b class="text-gray-600 dark:text-gray-300">Catégorie :</b> Antidouleur et anti-inflammatoire
+                    <b class="text-gray-600 dark:text-gray-300">Catégorie :</b> {{ $medicine->category }}
                 </li>
                 <li>
-                    <b class="text-gray-600 dark:text-gray-300">Statut :</b> Disponible sans ordonnance
+                    <b class="text-gray-600 dark:text-gray-300">Statut :</b>
+                    @if($medicine->prescription_required)
+                        Disponible sur ordonnance
+                    @else
+                        Disponible sans ordonnance
+                    @endif
                 </li>
                 <li>
-                    <b class="text-gray-600 dark:text-gray-300">Prix Public (PPV) :</b> 15,50 MAD
+                    <b class="text-gray-600 dark:text-gray-300">Prix Public (PPV) :</b> {{ $medicine->ppv }} MAD
                 </li>
             </ul>
 

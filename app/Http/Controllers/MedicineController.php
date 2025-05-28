@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Strategies\Medicine\Sorts\NameSort;
 use App\Strategies\Medicine\MedicineContext;
 use App\Strategies\Medicine\Sorts\QuantitySort;
+use App\Repositories\MedicineRepositoryInterface;
 use App\Strategies\Medicine\Filters\CategoryFilter;
 use App\Strategies\Medicine\Filters\PrescriptionFilter;
 
@@ -105,6 +106,27 @@ class MedicineController extends Controller
         $medicine = Medicine::findOrFail($id);
 
         return view('pharmacist.medicines.show', compact('medicine'));
+    }
+
+
+    
+    private $medicineRepository;
+
+    public function __construct(MedicineRepositoryInterface $medicineRepository)
+    {
+        $this->medicineRepository = $medicineRepository;
+    }
+
+    public function index()
+    {
+        $medicines = $this->medicineRepository->getAllAvailable();
+        return view('customer.medicines.index', compact('medicines'));
+    }
+
+    public function show($id)
+    {
+        $medicine = $this->medicineRepository->getById($id);
+        return view('customer.medicines.show', compact('medicine'));
     }
 
 }
