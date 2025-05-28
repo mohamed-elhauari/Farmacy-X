@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\MedicineImportController;
@@ -41,6 +42,7 @@ Route::get('/medicines/{id}', [MedicineController::class, 'show'])->name('custom
 
 
 
+Route::get('/my-orders', [OrderController::class, 'indexMyOrders'])->name('customer.orders.index');
 
 
 

@@ -66,7 +66,7 @@
                                             <a href="{{ route('dashboard.pharmacist') }}" class="block px-5 py-2.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                                         </li>
                                     </ul>
-                                    <a class="py-2" href="{{ route('logout') }}">
+                                    <a class="py-2">
                                         <form method="POST" action="{{ route('logout') }}" class="flex font-medium items-center px-5 py-3 rounded-md text-sm text-green-600 dark:text-green-500 hover:bg-gray-100 dark:hover:bg-gray-600">
                                             @csrf
                                             <svg class="w-5 h-5 text-green-600 dark:text-green-500 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
