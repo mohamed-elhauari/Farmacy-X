@@ -3,17 +3,46 @@
 namespace App\Repositories;
 
 use App\Models\Medicine;
+use App\Strategies\Medicine\Sorts\NameSort;
+use App\Strategies\Medicine\MedicineContext;
+use App\Strategies\Medicine\Sorts\QuantitySort;
+use App\Strategies\Medicine\Filters\CategoryFilter;
+use App\Strategies\Medicine\Filters\PrescriptionFilter;
 
 class MedicineRepository implements MedicineRepositoryInterface
 {
-    public function getAllAvailable()
+    public function getAllAvailable($request)
     {
-        return Medicine::whereHas('inventories', function ($query) {
+        $context = new MedicineContext();
+        $query = Medicine::query();
+
+        // Apply filters
+        if ($request->filled('category')) {
+            $context->setFilterStrategy(new CategoryFilter());
+            $query = $context->applyFilters($query, $request->category);
+        }
+
+        if ($request->filled('prescription')) {
+            $context->setFilterStrategy(new PrescriptionFilter());
+            $query = $context->applyFilters($query, $request->prescription);
+        }
+
+        // Apply sorting
+        $sort = $request->get('sort', 'name');
+        $direction = $request->get('direction', 'asc');
+
+        $context->setSortStrategy(
+            $sort === 'quantity' ? new QuantitySort() : new NameSort()
+        );
+
+        $query = $context->applySort($query, $direction);
+
+        // Filter medicines that have inventories with quantity > 0
+        $query = $query->whereHas('inventories', function ($query) {
             $query->where('quantity', '>', 0);
-            })
-            ->with('inventories')
-            ->orderBy('commercial_name')
-            ->paginate(12); 
+        });
+
+        return $query->with('inventories')->paginate(12)->appends($request->query());
         
     }
 

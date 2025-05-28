@@ -108,9 +108,9 @@ class MedicineController extends Controller
         $this->medicineRepository = $medicineRepository;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $medicines = $this->medicineRepository->getAllAvailable();
+        $medicines = $this->medicineRepository->getAllAvailable($request);
         
         $categories = Medicine::select('category')->distinct()->pluck('category');
         return view('customer.medicines.index', compact('medicines', 'categories'));
