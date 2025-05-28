@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Medicine;
 use App\Models\Inventory;
 use Illuminate\Http\Request;
+use App\Strategies\Medicine\Sorts\NameSort;
+use App\Strategies\Medicine\MedicineContext;
+use App\Strategies\Medicine\Sorts\QuantitySort;
+use App\Strategies\Medicine\Filters\CategoryFilter;
+use App\Strategies\Medicine\Filters\PrescriptionFilter;
 
 class MedicineController extends Controller
 {
@@ -60,6 +65,39 @@ class MedicineController extends Controller
                             ->paginate(10);
 
         return view('pharmacist.medicines.index', compact('medicines'));
+    }
+
+    public function indexPharmacistt(Request $request)
+    {
+        $context = new MedicineContext();
+        $query = Medicine::query();
+
+        // Apply filters
+        if ($request->filled('category')) {
+            $context->setFilterStrategy(new CategoryFilter());
+            $query = $context->applyFilters($query, $request->category);
+        }
+
+        if ($request->filled('prescription')) {
+            $context->setFilterStrategy(new PrescriptionFilter());
+            $query = $context->applyFilters($query, $request->prescription);
+        }
+
+        // Apply sorting
+        $sort = $request->get('sort', 'name');
+        $direction = $request->get('direction', 'asc');
+
+        $context->setSortStrategy(
+            $sort === 'quantity' ? new QuantitySort() : new NameSort()
+        );
+
+        $query = $context->applySort($query, $direction);
+
+        $medicines = $query->paginate(10);
+
+        $categories = Medicine::select('category')->distinct()->pluck('category');
+
+        return view('pharmacist.medicines.index', compact('medicines', 'categories'));
     }
 
     public function showPharmacist($id)

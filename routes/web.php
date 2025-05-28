@@ -61,7 +61,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/medicine/import-medicine-new', [MedicineImportController::class, 'storeMedicineNew'])->name('pharmacist.medicines.store-medicine-new');
 
 
-    Route::get('/pharmacist/medicines', [MedicineController::class, 'indexPharmacist'])->name('pharmacist.medicines.index');
+    Route::get('/pharmacist/medicines', [MedicineController::class, 'indexPharmacistt'])->name('pharmacist.medicines.index');
 
     Route::get('/medicine/addd-infos/{code}', [MedicineController::class, 'showMedicineInfos'])->name('pharmacist.medicines.addd-infos');
 
