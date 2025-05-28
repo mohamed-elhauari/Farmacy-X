@@ -54,9 +54,17 @@
                                         <div class="truncate">{{ Auth::user()->email }}</div>
                                     </div>
                                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
-                                        <li>
-                                            <a href="{{ route('dashboard.pharmacist') }}" class="block px-5 py-2.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                                        </li>
+
+                                        @if(Auth::user()->role === 'pharmacist')
+                                            <li>
+                                                <a href="{{ route('dashboard.pharmacist') }}" class="block px-5 py-2.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                                            </li>
+                                        @elseif(Auth::user()->role === 'customer')
+                                            <li>
+                                                <a href="" class="block px-5 py-2.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mes médicaments</a>
+                                            </li>
+                                        @endif
+
                                     </ul>
                                     <a class="py-2" href="{{ route('logout') }}">
                                         <form method="POST" action="{{ route('logout') }}" class="flex font-medium items-center px-5 py-3 rounded-md text-sm text-green-600 dark:text-green-500 hover:bg-gray-100 dark:hover:bg-gray-600">
