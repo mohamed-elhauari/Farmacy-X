@@ -55,6 +55,14 @@ Route::post('/order/create', [CartController::class, 'createOrder'])->name('orde
 
 
 
+Route::prefix('orders')->name('orders.')->group(function () {
+
+    Route::get('{order}/accept', [OrderController::class, 'accept'])->name('accept');
+    Route::get('{order}/reject', [OrderController::class, 'reject'])->name('reject');
+    Route::get('{order}/complete', [OrderController::class, 'complete'])->name('complete');
+    
+});
+
 
 
 

@@ -18,4 +18,22 @@ class OrderController extends Controller
         $orders = Order::with('items')->paginate(10);
         return view('pharmacist.orders.index', compact('orders'));
     }
+
+    public function accept(Order $order)
+    {
+        $order->update(['status' => 'processing']);
+        return redirect()->back()->with('success', 'Order accepted.');
+    }
+
+    public function reject(Order $order)
+    {
+        $order->update(['status' => 'cancelled']);
+        return redirect()->back()->with('success', 'Order rejected.');
+    }
+
+    public function complete(Order $order)
+    {
+        $order->update(['status' => 'completed']);
+        return redirect()->back()->with('success', 'Order completed.');
+    }
 }

@@ -145,7 +145,7 @@
                             </button>
                             <ul id="dropdown-cmd" class="hidden py-2 space-y-2">
                                 <li>
-                                    <a href="#" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Liste des commandes</a>
+                                    <a href="{{ route('pharmacist.orders.index') }}" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Liste des commandes</a>
                                 </li>
                                 <li>
                                     <a href="#" class="flex items-center w-full p-3 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Commandes en attente</a>

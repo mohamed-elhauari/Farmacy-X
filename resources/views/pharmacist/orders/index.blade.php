@@ -63,9 +63,9 @@
                             </td>
                             <td class="px-6 py-4 text-left">
                                 <div class="flex flex-col space-y-1">
-                                    <a href="" class="font-medium text-green-600 dark:text-green-500 hover:underline">Accepter</a>
-                                    <a href="" class="font-medium text-green-600 dark:text-green-500 hover:underline">Refuser</a>
-                                    <a href="" class="font-medium text-green-600 dark:text-green-500 hover:underline">Completer</a>
+                                    <a href="{{ route('orders.accept', $order->id) }}" class="font-medium text-green-600 dark:text-green-500 hover:underline">Accepter</a>
+                                    <a href="{{ route('orders.reject', $order->id) }}" class="font-medium text-green-600 dark:text-green-500 hover:underline">Refuser</a>
+                                    <a href="{{ route('orders.complete', $order->id) }}" class="font-medium text-green-600 dark:text-green-500 hover:underline">Completer</a>
                                 </div>
                             </td>
                         </tr>
