@@ -59,16 +59,7 @@ class MedicineController extends Controller
         return view('pharmacist.medicines.show', compact('medicine', 'inventories'));
     }
 
-    public function indexPharmacist()
-    {
-        $medicines = Medicine::with('inventories')
-                            ->orderBy('commercial_name')
-                            ->paginate(10);
-
-        return view('pharmacist.medicines.index', compact('medicines'));
-    }
-
-    public function indexPharmacistt(Request $request)
+    public function indexPharmacist(Request $request)
     {
         $context = new MedicineContext();
         $query = Medicine::query();
@@ -120,7 +111,9 @@ class MedicineController extends Controller
     public function index()
     {
         $medicines = $this->medicineRepository->getAllAvailable();
-        return view('customer.medicines.index', compact('medicines'));
+        
+        $categories = Medicine::select('category')->distinct()->pluck('category');
+        return view('customer.medicines.index', compact('medicines', 'categories'));
     }
 
     public function show($id)
