@@ -10,6 +10,7 @@ use App\Strategies\Medicine\MedicineContext;
 use App\Strategies\Medicine\Sorts\QuantitySort;
 use App\Repositories\MedicineRepositoryInterface;
 use App\Strategies\Medicine\Filters\CategoryFilter;
+use App\Strategies\Medicine\Searchs\MultiFieldSearch;
 use App\Strategies\Medicine\Filters\PrescriptionFilter;
 
 class MedicineController extends Controller
@@ -73,6 +74,11 @@ class MedicineController extends Controller
         if ($request->filled('prescription')) {
             $context->setFilterStrategy(new PrescriptionFilter());
             $query = $context->applyFilters($query, $request->prescription);
+        }
+
+        if ($request->filled('search')) {
+            $context->setSearchStrategy(new MultiFieldSearch());
+            $query = $context->applySearch($query, $request->search);
         }
 
         // Apply sorting
