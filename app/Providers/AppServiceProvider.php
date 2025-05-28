@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Order;
+use App\Observers\OrderObserver;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\MedicineRepository;
 use App\Repositories\MedicineRepositoryInterface;
@@ -19,8 +21,8 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
+    public function boot()
     {
-        //
+        Order::observe(OrderObserver::class);
     }
 }
