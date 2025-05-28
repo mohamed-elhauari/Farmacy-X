@@ -35,7 +35,46 @@
                             <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                             <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                         </button>
-                        <a href="{{ route('login') }}" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Se connecter</a>
+                        @auth
+                            <div class="flex items-center ms-3">
+                                
+                                <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm pe-1 font-medium text-gray-700 rounded-full hover:text-green-600 dark:hover:text-green-500 md:me-0 dark:text-white" type="button">
+                                    <span class="sr-only">Open user menu</span>
+                                    <img class="w-8 h-8 me-2 rounded-full" src="https://www.hunterlab.com/media/images/k8-77Tph4X3StM-unsplash-min.2e16d0ba.fill-692x346.jpg.pagespeed.ce.HbqvZu8Ter.jpg" alt="user photo">
+                                    
+                                    <svg class="w-2.5 h-2.5 ms-3 mt-1 text-gray-700 hover:text-green-600 dark:hover:text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                    </svg>
+                                </button>
+
+                                <!-- Dropdown menu -->
+                                <div id="dropdownAvatarName" class="p-2 z-10 w-64 hidden bg-white divide-y divide-gray-100 rounded-xl border border-gray-200 shadow-sm dark:bg-gray-700 dark:divide-gray-600 dark:border-gray-800">
+                                    <div class="px-4 py-3 text-sm text-gray-700 dark:text-white">
+                                        <div class="font-medium">{{ Auth::user()->name }}</div>
+                                        <div class="truncate">{{ Auth::user()->email }}</div>
+                                    </div>
+                                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
+                                        <li>
+                                            <a href="{{ route('dashboard.pharmacist') }}" class="block px-5 py-2.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                                        </li>
+                                    </ul>
+                                    <a class="py-2" href="{{ route('logout') }}">
+                                        <form method="POST" action="{{ route('logout') }}" class="flex font-medium items-center px-5 py-3 rounded-md text-sm text-green-600 dark:text-green-500 hover:bg-gray-100 dark:hover:bg-gray-600">
+                                            @csrf
+                                            <svg class="w-5 h-5 text-green-600 dark:text-green-500 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"/>
+                                            </svg>
+                                            <button type="submit">
+                                                Se déconnecter
+                                            </button>
+
+                                        </form>
+                                    </a>
+                                </div>
+                            </div>
+                        @else
+                            <a href="{{ route('login') }}" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Se connecter</a>
+                        @endauth
                         <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
                             <span class="sr-only">Open main menu</span>
                             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">

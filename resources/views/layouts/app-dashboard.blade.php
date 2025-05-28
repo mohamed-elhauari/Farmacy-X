@@ -49,7 +49,7 @@
                                 <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm pe-1 font-medium text-gray-700 rounded-full hover:text-green-600 dark:hover:text-green-500 md:me-0 dark:text-white" type="button">
                                     <span class="sr-only">Open user menu</span>
                                     <img class="w-8 h-8 me-2 rounded-full" src="https://www.hunterlab.com/media/images/k8-77Tph4X3StM-unsplash-min.2e16d0ba.fill-692x346.jpg.pagespeed.ce.HbqvZu8Ter.jpg" alt="user photo">
-                                    {{ Auth::user()->name }}
+                                    
                                     <svg class="w-2.5 h-2.5 ms-3 mt-1 text-gray-700 hover:text-green-600 dark:hover:text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                                     </svg>
@@ -63,10 +63,7 @@
                                     </div>
                                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
                                         <li>
-                                            <a href="#" class="block px-5 py-2.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profil</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="block px-5 py-2.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Paramètres</a>
+                                            <a href="{{ route('dashboard.pharmacist') }}" class="block px-5 py-2.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                                         </li>
                                     </ul>
                                     <a class="py-2" href="{{ route('logout') }}">

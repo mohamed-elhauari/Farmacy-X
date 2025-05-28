@@ -49,7 +49,7 @@
             </select>
 
             <button type="submit" class="px-4 py-2 rounded-md bg-green-600 text-white hover:bg-green-700 transition-colors">Appliquer</button>
-            <a href="{{ route('pharmacist.medicines.index') }}" class="px-4 py-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">Réinitialiser</a>
+            <a href="{{ route('pharmacist.medicines.index') }}" class="px-4 py-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600">Réinitialiser</a>
         </form>
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
