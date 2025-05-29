@@ -38,4 +38,24 @@ class CartController extends Controller
 
         return redirect()->route('customer.medicines.index')->with('success', 'Order placed successfully');
     }
+
+    public function index()
+    {
+        $user = auth()->user();
+        $cart = $user->cart()->with('items.medicine')->firstOrCreate([]);
+
+        $requiresPrescription = $cart->items->contains(fn($item) => $item->medicine && $item->medicine->prescription_required);
+
+        // Calculate total amount
+        $totalAmount = $cart->items->sum(function ($item) {
+            return ($item->quantity) * ($item->medicine->ppv);
+        });
+
+        return view('customer.medicines.cart', [
+            'cart' => $cart,
+            'requiresPrescription' => $requiresPrescription,
+            'totalAmount' => $totalAmount
+        ]);
+    }
+
 }

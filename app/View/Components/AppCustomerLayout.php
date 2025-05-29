@@ -14,6 +14,14 @@ class AppCustomerLayout extends Component
     public function render(): View
     {
         $categories = Medicine::select('category')->distinct()->pluck('category');
-        return view('layouts.app-customer', compact('categories'));
+
+        $cart = null;
+        $cartCount = 0;
+        if (auth()->check()) {
+            $cart = auth()->user()->cart;
+            $cartCount = $cart ? $cart->items()->count() : 0;
+        }
+
+        return view('layouts.app-customer', compact('categories', 'cartCount', 'cart'));
     }
 }

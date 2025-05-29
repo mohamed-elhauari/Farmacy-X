@@ -30,11 +30,6 @@ Route::get('/', function () {
 })->name('customer.welcome');
 
 
-Route::get('/medicines/cart', function () {
-    return view('customer.medicines.cart');
-})->name('customer.medicines.cart');
-
-
 
 Route::get('/medicines', [MedicineController::class, 'index'])->name('customer.medicines.index');
 Route::get('/medicines/{id}', [MedicineController::class, 'show'])->name('customer.medicines.show');
@@ -47,7 +42,7 @@ Route::get('/pharmacist/orders', [OrderController::class, 'indexOrders'])->name(
 
 
 
-
+Route::get('/cart', [CartController::class, 'index'])->name('customer.medicines.cart');
 
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 Route::post('/order/create', [CartController::class, 'createOrder'])->name('order.create');
