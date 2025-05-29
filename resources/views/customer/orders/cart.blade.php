@@ -36,10 +36,14 @@
 
                             @if ($requiresPrescription)
                                
-                                    <div class="flex md:flex-column justify-between items-center rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
-                                        <label class="text-sm font-medium text-gray-900 dark:text-white">Upload ordonnance *</label>
-                                        <input required type="file" name="prescription" class="px-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">
-                                    </div>
+                            <form id="orderForm" action="{{ route('order.create') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="flex md:flex-column justify-between items-center rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
+                                    <label class="text-sm font-medium text-gray-900 dark:text-white">Upload ordonnance *</label>
+                                    <input required type="file" name="prescription" class="px-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">
+                                </div>
+
+                            </form>
                                 
                             @endif
 
@@ -50,14 +54,30 @@
                                         <label for="counter-input-{{ $item->id }}" class="sr-only">Choose quantity:</label>
                                         <div class="flex items-center justify-between md:order-3 md:justify-end">
                                             <div class="flex items-center">
-                                                <button type="button" id="decrement-button-{{ $item->id }}" data-input-counter-decrement="counter-input-{{ $item->id }}" class="inline-flex h-5 w-5 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
-                                                    <svg class="h-2.5 w-2.5 text-gray-900 dark:text-white" fill="none" viewBox="0 0 18 2"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/></svg>
+                                                <button type="button"
+                                                    class="inline-flex h-5 w-5 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 decrement-btn"
+                                                    data-id="{{ $item->id }}">
+                                                    <svg class="h-2.5 w-2.5 text-gray-900 dark:text-white" fill="none" viewBox="0 0 18 2">
+                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
+                                                    </svg>
                                                 </button>
-                                                <input type="text" id="counter-input-{{ $item->id }}" name="quantities[{{ $item->id }}]" class="w-10 border-0 bg-transparent text-center text-sm font-medium text-gray-900 dark:text-white focus:outline-none" value="{{ $item->quantity }}" required />
-                                                <button type="button" id="increment-button-{{ $item->id }}" data-input-counter-increment="counter-input-{{ $item->id }}" class="inline-flex h-5 w-5 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
-                                                    <svg class="h-2.5 w-2.5 text-gray-900 dark:text-white" fill="none" viewBox="0 0 18 18"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/></svg>
+
+                                                <input type="text"
+                                                    class="w-10 border-0 bg-transparent text-center text-sm font-medium text-gray-900 dark:text-white focus:outline-none quantity-input"
+                                                    data-id="{{ $item->id }}"
+                                                    name="quantities[{{ $item->id }}]"
+                                                    value="{{ $item->quantity }}"
+                                                    required />
+
+                                                <button type="button"
+                                                    class="inline-flex h-5 w-5 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 increment-btn"
+                                                    data-id="{{ $item->id }}">
+                                                    <svg class="h-2.5 w-2.5 text-gray-900 dark:text-white" fill="none" viewBox="0 0 18 18">
+                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+                                                    </svg>
                                                 </button>
                                             </div>
+
                                             <div class="text-end md:order-4 md:w-32">
                                                 <p class="text-base font-bold text-gray-900 dark:text-white">x {{ $item->medicine->ppv ?? '0.00' }} MAD</p>
                                             </div>
@@ -111,7 +131,7 @@
                                 </dl>
                             </div>
 
-                            <button type="submit" class="flex w-full items-center justify-center rounded-lg bg-green-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirmer la commande</button>
+                            <button type="submit" form="orderForm" name="button" class="flex w-full items-center justify-center rounded-lg bg-green-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirmer la commande</button>
 
                         </div>
                     </div>
@@ -121,65 +141,67 @@
         </div>
     </section>
 
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            @foreach ($cart->items as $item)
-                const decrementBtn{{ $item->id }} = document.getElementById('decrement-button-{{ $item->id }}');
-                const incrementBtn{{ $item->id }} = document.getElementById('increment-button-{{ $item->id }}');
-                const input{{ $item->id }} = document.getElementById('counter-input-{{ $item->id }}');
+            const debounceTimers = {};
 
-                let debounceTimer{{ $item->id }};
+            function debounceUpdate(itemId, quantity) {
+                clearTimeout(debounceTimers[itemId]);
+                debounceTimers[itemId] = setTimeout(() => {
+                    updateQuantity(itemId, quantity);
+                }, 1000);
+            }
 
-                function debounceUpdate(quantity) {
-                    clearTimeout(debounceTimer{{ $item->id }});
-                    debounceTimer{{ $item->id }} = setTimeout(() => {
-                        updateQuantity(quantity);
-                    }, 1000); // Wait 1 seconds after last change
-                }
+            function updateQuantity(itemId, quantity) {
+                fetch("{{ route('cart.updateQuantity') }}", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    },
+                    body: JSON.stringify({ item_id: itemId, quantity: quantity })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.querySelector(`.quantity-input[data-id="${itemId}"]`).value = data.newQuantity;
+                        location.reload(); // or update subtotal dynamically if desired
+                    }
+                });
+            }
 
-                function updateQuantity(newQty) {
-                    fetch("{{ route('cart.updateQuantity') }}", {
-                        method: "POST",
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                        },
-                        body: JSON.stringify({
-                            item_id: {{ $item->id }},
-                            quantity: newQty
-                        })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            input{{ $item->id }}.value = data.newQuantity;
-                            location.reload(); // Or remove this to update only specific parts
-                        }
-                    });
-                }
+            document.querySelectorAll('.increment-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.dataset.id;
+                    const input = document.querySelector(`.quantity-input[data-id="${id}"]`);
+                    let current = parseInt(input.value) || 1;
+                    input.value = current + 1;
+                    debounceUpdate(id, current + 1);
+                });
+            });
 
-                decrementBtn{{ $item->id }}.addEventListener('click', () => {
-                    let current = parseInt(input{{ $item->id }}.value);
+            document.querySelectorAll('.decrement-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.dataset.id;
+                    const input = document.querySelector(`.quantity-input[data-id="${id}"]`);
+                    let current = parseInt(input.value) || 1;
                     if (current > 1) {
-                        input{{ $item->id }}.value = current - 1;
-                        debounceUpdate(current - 1);
+                        input.value = current - 1;
+                        debounceUpdate(id, current - 1);
                     }
                 });
+            });
 
-                incrementBtn{{ $item->id }}.addEventListener('click', () => {
-                    let current = parseInt(input{{ $item->id }}.value);
-                    input{{ $item->id }}.value = current + 1;
-                    debounceUpdate(current + 1);
-                });
-
-                // Optional: If user types manually into the input field
-                input{{ $item->id }}.addEventListener('input', () => {
-                    let value = parseInt(input{{ $item->id }}.value);
+            document.querySelectorAll('.quantity-input').forEach(input => {
+                input.addEventListener('input', () => {
+                    const id = input.dataset.id;
+                    let value = parseInt(input.value);
                     if (!isNaN(value) && value >= 1) {
-                        debounceUpdate(value);
+                        debounceUpdate(id, value);
                     }
                 });
-            @endforeach
+            });
         });
     </script>
 

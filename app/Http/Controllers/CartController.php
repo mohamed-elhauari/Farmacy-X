@@ -40,7 +40,7 @@ class CartController extends Controller
         $command = new CreateOrderCommand($request->file('prescription'));
         $command->execute();
 
-        return redirect()->route('customer.medicines.index')->with('success', 'Order placed successfully');
+        return redirect()->route('customer.orders.index')->with('success', 'Order placed successfully');
     }
 
     public function index()

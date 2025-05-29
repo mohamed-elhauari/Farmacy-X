@@ -9,13 +9,13 @@ class OrderController extends Controller
 {
     public function indexMyOrders()
     {
-        $orders = auth()->user()->orders()->with('items')->get();
+        $orders = auth()->user()->orders()->latest()->with('items')->get();
         return view('customer.orders.index', compact('orders'));
     }
 
     public function indexOrders()
     {
-        $orders = Order::with('items')->paginate(10);
+        $orders = Order::with('items')->paginate(5);
         return view('pharmacist.orders.index', compact('orders'));
     }
 
