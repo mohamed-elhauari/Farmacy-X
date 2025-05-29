@@ -51,7 +51,7 @@ class CartController extends Controller
             return ($item->quantity) * ($item->medicine->ppv);
         });
 
-        return view('customer.medicines.cart', [
+        return view('customer.orders.cart', [
             'cart' => $cart,
             'requiresPrescription' => $requiresPrescription,
             'totalAmount' => $totalAmount

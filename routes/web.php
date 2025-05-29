@@ -42,7 +42,7 @@ Route::get('/pharmacist/orders', [OrderController::class, 'indexOrders'])->name(
 
 
 
-Route::get('/cart', [CartController::class, 'index'])->name('customer.medicines.cart');
+Route::get('/cart', [CartController::class, 'index'])->name('customer.orders.cart');
 
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 Route::post('/order/create', [CartController::class, 'createOrder'])->name('order.create');
