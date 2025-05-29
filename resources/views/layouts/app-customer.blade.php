@@ -50,7 +50,7 @@
                         @auth
                             <div class="flex items-center ms-3">
                                 
-                                <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm pe-1 font-medium text-gray-700 rounded-full hover:text-green-600 dark:hover:text-green-500 md:me-0 dark:text-white" type="button">
+                                <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm pe-1 font-medium text-gray-700 rounded-full hover:text-green-600 dark:hover:text-green-500 ms-3 md:me-0 dark:text-white" type="button">
                                     <span class="sr-only">Open user menu</span>
                                     <img class="w-8 h-8 me-2 rounded-full" src="https://www.hunterlab.com/media/images/k8-77Tph4X3StM-unsplash-min.2e16d0ba.fill-692x346.jpg.pagespeed.ce.HbqvZu8Ter.jpg" alt="user photo">
                                 </button>
@@ -119,7 +119,7 @@
                 </div>
 
                 <!-- Dropdown menu -->
-                <div id="mega-menu-full-dropdown" class="hidden mt-1 bg-white border-gray-200 shadow-xs border-y dark:bg-gray-800 dark:border-gray-600">
+                <div id="mega-menu-full-dropdown" class="hidden absolute left-0 right-0 mt-1 bg-white border-gray-200 shadow-xs border-y dark:bg-gray-800 dark:border-gray-600 z-30">
                     <div class="grid max-w-screen-xl px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:grid-cols-4 md:px-6">
                         @php
                             $sortedCategories = $categories->sort()->values();
@@ -128,8 +128,8 @@
                         <ul>
                             <li>
                                 <form method="GET" action="{{ route('customer.medicines.index') }}">
-                                    <button type="submit" class="block w-full text-left p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
-                                        <div class="font-semibold">Tous les catégories</div>
+                                    <button type="submit" class="block w-full text-left p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                        <div class="font-semibold">Tous les médicaments</div>
                                     </button>
                                 </form>
                             </li>
@@ -140,7 +140,7 @@
                                     <li>
                                         <form method="GET" action="{{ route('customer.medicines.index') }}">
                                             <input type="hidden" name="category" value="{{ $category }}">
-                                            <button type="submit" class="block w-full text-left p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                            <button type="submit" class="block w-full text-left p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
                                                 <div class="font-semibold">{{ $category }}</div>
                                             </button>
                                         </form>
