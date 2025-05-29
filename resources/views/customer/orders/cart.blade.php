@@ -21,16 +21,22 @@
                 </div>
 
             @else
+                <div class="flex gap-4 items-center">
+                    <svg class="w-6 h-6 text-green-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
+                    </svg>
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Panier des <span class="text-green-700 dark:text-green-600">médicaments</span> </h2>
+                </div>
+
                 <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
 
                     
-                    
-                    <div class="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-3xl">
+                    <div class="mx-auto flex-none lg:max-w-2xl xl:max-w-3xl xl:w-screen">
                         <div class="space-y-6">
 
                             @if ($requiresPrescription)
                                
-                                    <div class="flex justify-between items-center rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
+                                    <div class="flex md:flex-column justify-between items-center rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
                                         <label class="text-sm font-medium text-gray-900 dark:text-white">Upload ordonnance *</label>
                                         <input required type="file" name="prescription" class="px-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">
                                     </div>
@@ -85,7 +91,7 @@
                     </div>
 
                     <div class="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
-                        <div class="min-w-64 space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
+                        <div class="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
                             <p class="text-xl font-semibold text-gray-900 dark:text-white">Montant</p>
 
                             <div class="space-y-4">
