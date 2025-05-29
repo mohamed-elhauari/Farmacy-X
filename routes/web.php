@@ -47,6 +47,10 @@ Route::get('/cart', [CartController::class, 'index'])->name('customer.orders.car
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 Route::post('/order/create', [CartController::class, 'createOrder'])->name('order.create');
 
+Route::delete('/cart/item/{id}', [CartController::class, 'remove'])->name('cart.remove');
+
+// routes/web.php
+Route::post('/cart/update-quantity', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
 
 
 

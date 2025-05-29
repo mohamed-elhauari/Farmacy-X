@@ -54,7 +54,7 @@
     <!-- Popular medicines -->
     <div class="place-items-center px-6 py-10 sm:py-14 bg-white md:py-24 dark:bg-gray-800">
         
-        <h3 class="text-3xl font-bold dark:text-white mb-8 md:mb-12 underline underline-offset-4">Médicaments <span class="text-green-700 dark:text-green-600"> populaires </span></h3>
+        <h3 class="text-3xl font-bold dark:text-white mb-8 md:mb-12">Médicaments <span class="text-green-600 dark:text-green-500"> populaires </span></h3>
 
         <div class="grid grid-cols-1 md:grid-cols-2 sm:place-items-start lg:grid-cols-3 gap-8">
             

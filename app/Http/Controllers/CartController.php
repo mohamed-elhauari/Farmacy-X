@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use App\Models\CartItem;
 use Illuminate\Http\Request;
 use App\Commands\AddToCartCommand;
 use App\Commands\CreateOrderCommand;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -57,5 +61,48 @@ class CartController extends Controller
             'totalAmount' => $totalAmount
         ]);
     }
+
+
+    public function remove($id)
+    {
+        $user = Auth::user();
+
+        // Get the user's cart
+        $cart = Cart::where('customer_id', $user->id)->first();
+
+        if (!$cart) {
+            return redirect()->back()->with('error', 'Panier introuvable.');
+        }
+
+        // Find the item by ID and cart ID (to ensure it belongs to the user)
+        $item = CartItem::where('id', $id)->where('cart_id', $cart->id)->first();
+
+        if (!$item) {
+            return redirect()->back()->with('error', 'Article non trouvé dans votre panier.');
+        }
+
+        $item->delete();
+
+        return redirect()->back()->with('success', 'Article retiré du panier.');
+    }
+
+
+    public function updateQuantity(Request $request)
+{
+    $request->validate([
+        'item_id' => 'required|exists:cart_items,id',
+        'quantity' => 'required|integer|min:1',
+    ]);
+
+    $item = CartItem::find($request->item_id);
+    $item->quantity = $request->quantity;
+    $item->save();
+
+    return response()->json([
+        'success' => true,
+        'newQuantity' => $item->quantity,
+    ]);
+}
+
 
 }

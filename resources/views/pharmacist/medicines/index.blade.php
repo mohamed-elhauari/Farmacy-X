@@ -3,7 +3,7 @@
     <div class="min-h-[calc(100vh-8rem)]">
 
         
-        <h2 class="text-4xl font-bold dark:text-white mb-8 mt-12">Liste des <span class="text-green-700 dark:text-green-600">médicaments</span></h2>
+        <h2 class="text-4xl font-bold dark:text-white mb-8 mt-12">Liste des <span class="text-green-600 dark:text-green-500">médicaments</span></h2>
 
 
         <form method="GET" action="{{ route('pharmacist.medicines.index') }}" class="mb-8 flex flex-wrap gap-4 items-center">
