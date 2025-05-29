@@ -58,42 +58,28 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 sm:place-items-start lg:grid-cols-3 gap-8">
             
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
-                <a href="#">
-                    <img class="rounded-t-lg" src="https://farmaciaherrera.com.mx/cdn/shop/files/7503004908691_a7cc7ac7-82e6-4e4a-9e90-cbd53f3e498b.jpg?v=1726159948" alt="" />
-                </a>
-                <div class="p-5">
-                    <a href="#">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Doliprane Paracetamol 1000 mg Tablets</h5>
+            @forelse ($medicines as $medicine)
+                <div class="max-w-sm bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
+                    <a href="{{ route('customer.medicines.show', $medicine->id) }}">
+                        <img class="rounded-t-lg" src="{{ $medicine->image_url ?? 'https://farmaciaherrera.com.mx/cdn/shop/files/7503004908691_a7cc7ac7-82e6-4e4a-9e90-cbd53f3e498b.jpg?v=1726159948' }}" alt="" />
                     </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021.</p>
+                    <div class="p-5">
+                        <a href="{{ route('customer.medicines.show', $medicine->id) }}">
+                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                {{ $medicine->commercial_name }}, ({{ $medicine->dci }} - {{ $medicine->laboratory }})
+                            </h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                            {{ $medicine->form }} {{ $medicine->dosage }}<br>
+                            Catégorie : {{ $medicine->category }}<br>
+                            {{ $medicine->prescription_required ? 'Avec ordonnance' : 'Sans ordonnance' }}<br>
+                            Prix : {{ $medicine->ppv }} MAD
+                        </p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
-                <a href="#">
-                    <img class="rounded-t-lg" src="https://farmaciaherrera.com.mx/cdn/shop/files/7503004908691_a7cc7ac7-82e6-4e4a-9e90-cbd53f3e498b.jpg?v=1726159948" alt="" />
-                </a>
-                <div class="p-5">
-                    <a href="#">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                    </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021.</p>
-                </div>
-            </div>
-
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
-                <a href="#">
-                    <img class="rounded-t-lg" src="https://farmaciaherrera.com.mx/cdn/shop/files/7503004908691_a7cc7ac7-82e6-4e4a-9e90-cbd53f3e498b.jpg?v=1726159948" alt="" />
-                </a>
-                <div class="p-5">
-                    <a href="#">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                    </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021.</p>
-                    
-                </div> 
-            </div>
+            @empty
+                <p class="text-gray-600 dark:text-gray-300">Aucun médicament disponible pour le moment.</p>
+            @endforelse
             
             <a href="{{ route('customer.medicines.index') }}" class="text-center md:col-span-2 lg:col-span-3 w-full mt-4 py-2.5 px-6 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:border-green-200 hover:text-green-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-green-600 hover:dark:border-green-800">Voir tous les médicaments</a>
 

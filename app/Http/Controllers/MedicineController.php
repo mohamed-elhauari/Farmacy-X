@@ -128,4 +128,11 @@ class MedicineController extends Controller
         return view('customer.medicines.show', compact('medicine'));
     }
 
+    public function indexPopular()
+    {
+        $medicines = $this->medicineRepository->getMostPopular();
+        
+        return view('customer.welcome', compact('medicines'));
+    }
+
 }

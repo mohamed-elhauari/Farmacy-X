@@ -25,11 +25,8 @@ Route::get('/dashboard-pharmacist', function () {
     return view('pharmacist.dashboard');
 })->name('dashboard.pharmacist');
 
-Route::get('/', function () {
-    return view('customer.welcome');
-})->name('customer.welcome');
 
-
+Route::get('/', [MedicineController::class, 'indexPopular'])->name('customer.welcome');
 
 Route::get('/medicines', [MedicineController::class, 'index'])->name('customer.medicines.index');
 Route::get('/medicines/{id}', [MedicineController::class, 'show'])->name('customer.medicines.show');

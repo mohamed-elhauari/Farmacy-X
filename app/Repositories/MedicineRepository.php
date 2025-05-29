@@ -57,4 +57,13 @@ class MedicineRepository implements MedicineRepositoryInterface
 
         return $medicine;
     }
+
+    public function getMostPopular($limit = 3)
+    {
+        return Medicine::with('inventories')
+            ->whereHas('inventories', fn($q) => $q->where('quantity', '>', 0))
+            // **** quantity orders
+            ->take($limit)
+            ->get();
+    }
 }
