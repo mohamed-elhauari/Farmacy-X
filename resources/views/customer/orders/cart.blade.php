@@ -131,7 +131,14 @@
                                 </dl>
                             </div>
 
-                            <button type="submit" form="orderForm" name="button" class="flex w-full items-center justify-center rounded-lg bg-green-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirmer la commande</button>
+                            @if ($requiresPrescription)
+                                <button type="submit" form="orderForm" name="button" class="flex w-full items-center justify-center rounded-lg bg-green-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirmer la commande</button>
+                            @else
+                                <form id="orderForm1" action="{{ route('order.create') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <button type="submit" form="orderForm1" name="button" class="flex w-full items-center justify-center rounded-lg bg-green-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirmer la commande</button>
+                                </form>
+                            @endif
 
                         </div>
                     </div>

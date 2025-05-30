@@ -28,7 +28,7 @@ class CartController extends Controller
     public function createOrder(Request $request)
     {
         $request->validate([
-            'prescription' => 'nullable|image|max:2048'
+            'prescription' => 'nullable|image'
         ]);
 
         $filePath = null;

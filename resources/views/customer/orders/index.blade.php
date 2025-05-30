@@ -4,7 +4,35 @@
         
         <h3 class="text-3xl font-bold dark:text-white mb-8 md:mb-12">Mes <span class="text-green-600 dark:text-green-500">commandes</span></h3>
 
-       
+       <form method="GET" action="{{ route('customer.orders.index') }}" class="mb-8 flex flex-wrap gap-4 items-center justify-self-start xl:ml-32">
+
+            <!-- Filter by Status -->
+            <select name="status" class="px-4 py-2 pr-10 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-green-500">
+                <option value="">Tous les statuts</option>
+                <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>En attente</option>
+                <option value="processing" {{ request('status') == 'processing' ? 'selected' : '' }}>En cours</option>
+                <option value="cancelled" {{ request('status') == 'cancelled' ? 'selected' : '' }}>Annulée</option>
+                <option value="completed" {{ request('status') == 'completed' ? 'selected' : '' }}>Complétée</option>
+            </select>
+
+            <!-- Sort Field -->
+            <select name="sort" class="px-4 py-2 pr-10 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-green-500">
+                <option value="date" {{ request('sort', 'date') == 'date' ? 'selected' : '' }}>Trier par date</option>
+                <option value="amount" {{ request('sort') == 'amount' ? 'selected' : '' }}>Trier par montant</option>
+            </select>
+
+            <!-- Sort Direction -->
+            <select name="direction" class="px-4 py-2 pr-10 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-green-500">
+                <option value="asc" {{ request('direction', 'desc') == 'asc' ? 'selected' : '' }}>Ascendant</option>
+                <option value="desc" {{ request('direction', 'desc') == 'desc' ? 'selected' : '' }}>Descendant</option>
+            </select>
+
+            <!-- Submit Button -->
+            <button type="submit" class="px-4 py-2 rounded-md bg-green-600 text-white hover:bg-green-700 transition-colors">Appliquer</button>
+
+            <!-- Reset Button -->
+            <a href="{{ route('customer.orders.index') }}" class="px-4 py-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600">Réinitialiser</a>
+        </form>
 
         <!-- Orders -->
         
@@ -69,6 +97,10 @@
                     @endforelse
                 </tbody>
             </table>
+            <!-- Pagination -->
+            <div class="my-2 mx-4">
+                {{ $orders->links() }}
+            </div>
         </div>
 
         
