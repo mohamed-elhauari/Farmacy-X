@@ -21,12 +21,11 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-Route::get('/dashboard-pharmacist', function () {
-    return view('pharmacist.dashboard');
-})->name('dashboard.pharmacist');
+
+Route::get('/dashboard-pharmacist', [MedicineController::class, 'dashboardPharmacist'])->name('dashboard.pharmacist');
 
 
-Route::get('/', [MedicineController::class, 'indexPopular'])->name('customer.welcome');
+Route::get('/', [MedicineController::class, 'indexPage'])->name('customer.welcome');
 
 Route::get('/medicines', [MedicineController::class, 'index'])->name('customer.medicines.index');
 Route::get('/medicines/{id}', [MedicineController::class, 'show'])->name('customer.medicines.show');

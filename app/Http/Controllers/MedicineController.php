@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Medicine;
 use App\Models\Inventory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use App\Strategies\Medicine\Sorts\NameSort;
 use App\Strategies\Medicine\MedicineContext;
 use App\Strategies\Medicine\Sorts\QuantitySort;
@@ -128,11 +131,58 @@ class MedicineController extends Controller
         return view('customer.medicines.show', compact('medicine'));
     }
 
-    public function indexPopular()
+    public function indexPage()
     {
         $medicines = $this->medicineRepository->getMostPopular();
         
         return view('customer.welcome', compact('medicines'));
     }
+
+    public function dashboardPharmacist()
+    {
+        // Get latest 3 orders
+        $orders = Order::latest()->take(3)->get();
+        // Get total orders count
+        $ordersCount = Order::count();
+
+        $medicines = Medicine::with('inventories')->get();
+
+        // Expired = no inventory OR sum(quantity) == 0
+        $expiredMedicinesCount = Medicine::whereDoesntHave('inventories')
+            ->orWhereHas('inventories', function ($q) {
+                $q->select(DB::raw('SUM(quantity)'))
+                  ->havingRaw('SUM(quantity) = 0');
+            })
+            ->count();
+
+        // Stock Faible = sum(inventories.quantity) < reorder_threshold
+        $lowStockCount = $medicines->filter(function ($medicine) {
+            $total = $medicine->inventories->sum('quantity');
+            return $total < $medicine->reorder_threshold;
+        })->count();
+
+        // Near Expiration = inventory expiring in 30 days
+        $nearExpiryCount = Inventory::whereDate('expiration_date', '<=', now()->addDays(30))
+            ->where('quantity', '>', 0)
+            ->count();
+
+        $ordersPendingCount = Order::all()->where('status', 'pending')->count();
+        $orderStatusCounts = Order::select('status', DB::raw('count(*) as total'))
+        ->groupBy('status')
+        ->pluck('total', 'status');
+        
+
+        return view('pharmacist.dashboard', compact(
+            'orders',
+            'ordersCount',
+            'medicines',
+            'expiredMedicinesCount',
+            'lowStockCount',
+            'nearExpiryCount',
+            'ordersPendingCount',
+            'orderStatusCounts'
+        ));
+    }
+
 
 }
