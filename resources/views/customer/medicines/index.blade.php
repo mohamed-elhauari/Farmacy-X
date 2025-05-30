@@ -58,7 +58,7 @@
             @forelse ($medicines as $medicine)
                 <div class="w-full bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
                     <a href="{{ route('customer.medicines.show', $medicine->id) }}">
-                        <img class="rounded-t-lg" src="{{ $medicine->image_url ?? 'https://farmaciaherrera.com.mx/cdn/shop/files/7503004908691_a7cc7ac7-82e6-4e4a-9e90-cbd53f3e498b.jpg?v=1726159948' }}" alt="" />
+                        <img class="rounded-t-lg" src="{{ $medicine->image_url }}" alt="" />
                     </a>
                     <div class="p-5">
                         <a href="{{ route('customer.medicines.show', $medicine->id) }}">

@@ -23,4 +23,11 @@ class Medicine extends Model
     {
         return $this->inventories->sum('quantity');
     }
+
+    public function getImageUrlAttribute()
+    {
+        $fallbackNumber = $this->id % 10 + 1; 
+        return asset("storage/medicines/medicine-{$fallbackNumber}.jpg");
+    }
+
 }

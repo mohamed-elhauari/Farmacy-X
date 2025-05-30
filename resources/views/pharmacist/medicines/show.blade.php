@@ -4,16 +4,16 @@
 
         <div class="grid grid-cols-2 gap-2 max-w-lg">
             <div>
-                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+                <img class="h-auto max-w-full rounded-lg border" src="{{ $medicine->image_url }} " alt="">
             </div>
             <div>
-                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
+                <img class="h-auto max-w-full rounded-lg border" src="{{ $medicine->image_url }} " alt="">
             </div>
             <div>
-                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
+                <img class="h-auto max-w-full rounded-lg border" src="{{ $medicine->image_url }} " alt="">
             </div>
             <div>
-                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
+                <img class="h-auto max-w-full rounded-lg border" src="{{ $medicine->image_url }} " alt="">
             </div>
         </div>
 

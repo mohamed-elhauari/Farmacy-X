@@ -2,20 +2,20 @@
 
 
 
-    <div class="min-h-[calc(100vh-4rem)] flex flex-col md:flex-row items-center justify-center py-16 px-4 lg:px-12 xl:px-24 md:py-32 bg-white dark:bg-gray-900 md:gap-6 transition-all duration-300">
+    <div class="min-h-[calc(100vh-4rem)] flex flex-col md:flex-row items-center justify-center py-16 px-4 lg:px-12 xl:px-24 md:py-20 bg-white dark:bg-gray-900 md:gap-6 transition-all duration-300">
 
         <div class="grid grid-cols-2 gap-2 max-w-lg">
             <div>
-                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+                <img class="h-auto max-w-full rounded-lg border" src="{{ $medicine->image_url }} " alt="">
             </div>
             <div>
-                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
+                <img class="h-auto max-w-full rounded-lg border" src="{{ $medicine->image_url }} " alt="">
             </div>
             <div>
-                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
+                <img class="h-auto max-w-full rounded-lg border" src="{{ $medicine->image_url }} " alt="">
             </div>
             <div>
-                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
+                <img class="h-auto max-w-full rounded-lg border" src="{{ $medicine->image_url }} " alt="">
             </div>
         </div>
 
