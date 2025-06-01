@@ -7,8 +7,13 @@
 
 
         <form method="GET" action="{{ route('pharmacist.medicines.index') }}" class="mb-8 flex flex-wrap gap-4 items-center">
+
+            <input type="text" name="search" placeholder="Médicament" value="{{ request('search') }}"
+                class="px-4 py-2 xl:w-40 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-green-500">
+
+
             <!-- Filter by Category -->
-            <select name="category" class="px-4 py-2 pr-10 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-green-500">
+            <select name="category" class="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-green-500">
                 <option value="">Toutes les catégories</option>
                 @foreach($categories->sort() as $category)
                     <option value="{{ $category }}" 
@@ -19,7 +24,7 @@
             </select>
 
             <!-- Filter by Prescription -->
-            <select name="prescription" class="px-4 py-2 pr-10 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-green-500">
+            <select name="prescription" class="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-green-500">
                 <option value="">Toutes</option>
                 <option value="true" {{ request('prescription') == 'true' ? 'selected' : '' }}>
                     Avec ordonnance
@@ -30,7 +35,7 @@
             </select>
 
             <!-- Sort Options -->
-            <select name="sort" class="px-4 py-2 pr-10 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-green-500">
+            <select name="sort" class="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-green-500">
                 <option value="name" {{ request('sort', 'name') == 'name' ? 'selected' : '' }}>
                     Trier par nom
                 </option>
@@ -39,7 +44,7 @@
                 </option>
             </select>
 
-            <select name="direction" class="px-4 py-2 pr-10 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-green-500">
+            <select name="direction" class="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-green-500">
                 <option value="asc" {{ request('direction', 'asc') == 'asc' ? 'selected' : '' }}>
                     Ascendant
                 </option>

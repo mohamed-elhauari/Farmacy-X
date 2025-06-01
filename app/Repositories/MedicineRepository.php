@@ -8,6 +8,7 @@ use App\Strategies\Medicine\Sorts\NameSort;
 use App\Strategies\Medicine\MedicineContext;
 use App\Strategies\Medicine\Sorts\QuantitySort;
 use App\Strategies\Medicine\Filters\CategoryFilter;
+use App\Strategies\Medicine\Searchs\MultiFieldSearch;
 use App\Strategies\Medicine\Filters\PrescriptionFilter;
 
 class MedicineRepository implements MedicineRepositoryInterface
@@ -16,6 +17,11 @@ class MedicineRepository implements MedicineRepositoryInterface
     {
         $context = new MedicineContext();
         $query = Medicine::query();
+
+        if ($request->filled('search')) {
+            $context->setSearchStrategy(new MultiFieldSearch());
+            $query = $context->applySearch($query, $request->search);
+        }
 
         // Apply filters
         if ($request->filled('category')) {
