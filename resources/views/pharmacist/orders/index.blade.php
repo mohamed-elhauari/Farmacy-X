@@ -120,8 +120,10 @@
                                     @if ($order->status === 'pending')
                                         <a href="{{ route('orders.accept', $order->id) }}" class="font-medium text-green-600 dark:text-green-500 hover:underline">Accepter</a>
                                         <a href="{{ route('orders.reject', $order->id) }}" class="font-medium text-green-600 dark:text-green-500 hover:underline">Refuser</a>
-                                    @elseif ($order->status !== 'completed')
+                                    @elseif ($order->status !== 'completed' && $order->status !== 'cancelled')
                                         <a href="{{ route('orders.complete', $order->id) }}" class="font-medium text-green-600 dark:text-green-500 hover:underline">Completer</a>
+                                    @elseif ($order->status !== 'cancelled')
+
                                     @endif
                                 </div>
                             </td>
