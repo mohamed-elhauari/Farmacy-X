@@ -1,119 +1,110 @@
-💊 Farmacy-X - Plateforme de Gestion de Pharmacie
+# 💊 Farmacy-X - Plateforme de Gestion de Pharmacie
 
+![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
 
+---
 
+## 🧾 Description
 
+**Farmacy-X** est une application web moderne qui facilite la gestion des pharmacies. Elle permet aux pharmaciens de gérer leurs stocks, commandes, et prescriptions, tout en offrant aux clients un espace pour consulter et commander leurs médicaments de manière simple et sécurisée.
 
+---
 
-🧾 Description
-Farmacy-X est une application web moderne conçue pour faciliter la gestion des pharmacies. Elle permet aux clients de commander des médicaments en ligne et aux pharmaciens de gérer les stocks, les prescriptions, les commandes et la communication avec les patients.
+## 🎯 Objectifs
 
-🎯 Objectifs
-Digitaliser la gestion des médicaments et des prescriptions.
+- Digitaliser la gestion quotidienne des pharmacies.
+- Améliorer la relation entre pharmacien et client.
+- Intégrer des notifications et automatiser les commandes.
+- Utiliser des design patterns pour une architecture maintenable.
 
-Offrir aux clients une interface intuitive pour passer leurs commandes.
+---
 
-Aider les pharmaciens à suivre les stocks, traiter les prescriptions et gérer les commandes.
+## ⚙️ Fonctionnalités Clés
 
-Intégrer des notifications automatiques et un système sécurisé.
+### 👨‍⚕️ Côté Client :
+- Rechercher et commander des médicaments.
+- Suivre l’état des commandes.
+- Télécharger et consulter les prescriptions.
+- Recevoir des notifications par e-mail.
 
-🧩 Fonctionnalités Clés
-Pour les Clients :
-Rechercher et commander des médicaments.
+### 🧑‍💼 Côté Pharmacien :
+- Gérer les stocks, médicaments et commandes.
+- Valider les ordonnances.
+- Être notifié des nouvelles commandes.
+- Visualiser les rapports et statistiques.
 
-Ajouter des médicaments au panier.
+### 🛡️ Côté Admin :
+- Gérer les utilisateurs (clients, pharmaciens).
+- Superviser les activités et modérer les données.
+- Configurer les paramètres de la plateforme.
 
-Télécharger une ordonnance.
+---
 
-Suivre le statut de leur commande.
+## 🧠 Design Patterns Implémentés
 
-Recevoir des notifications par email.
+- **Builder** : Pour la construction des objets `Medicine`.
+- **Repository** : Pour l’abstraction de la couche d’accès aux données.
+- **Strategy** : Pour le tri et le filtrage dynamiques des données.
+- **Command** : Pour encapsuler les actions de commande.
+- **Observer** : Pour notifier automatiquement les clients par mail.
 
-Pour les Pharmaciens :
-Gérer le stock des médicaments (quantité, prix, dates).
+---
 
-Valider ou refuser les prescriptions.
+## 🛠️ Technologies Utilisées
 
-Suivre les commandes des clients.
+- **Backend** : Laravel (PHP)
+- **Frontend** : Blade, Tailwind CSS, Alpine.js
+- **Base de Données** : MySQL
+- **Outils** : Git, GitHub, Figma
+- **Modélisation** : UML (cas d’utilisation, classes, séquences)
 
-Être notifié automatiquement lors de changements de statut.
+---
 
-Pour les Administrateurs :
-Gérer les comptes utilisateurs.
+## 🚀 Installation et Lancement
 
-Superviser les prescriptions et les commandes.
+1. **Cloner le dépôt :**
 
-Visualiser des statistiques globales.
-
-🧠 Design Patterns Utilisés
-Builder : Pour construire les objets Medicine via une interface fluide.
-
-Repository : Pour centraliser la logique de données et séparer le contrôleur des modèles.
-
-Strategy : Pour permettre des filtrages dynamiques (par prix, stock, etc.).
-
-Command : Pour encapsuler les actions comme AddToCart ou CreateOrder.
-
-Observer : Pour envoyer automatiquement un email au client lors d’un changement de statut de commande.
-
-⚙️ Technologies Utilisées
-Backend : Laravel (PHP)
-
-Frontend : Blade + Tailwind CSS
-
-Base de Données : MySQL
-
-Versionning : Git, GitHub
-
-Modélisation UML : Cas d’utilisation, classes, séquences
-
-Prototypage : Figma
-
-🚀 Installation et Lancement
-Cloner le dépôt :
-
-bash
-Copy
-Edit
-git clone https://github.com/votre-utilisateur/farmacy-x.git
+```bash
+git clone https://github.com/ton-utilisateur/farmacy-x.git
 cd farmacy-x
-Installer les dépendances PHP :
+```
 
-bash
-Copy
-Edit
+2. **Installer les dépendances :**
+
+```bash
 composer install
-Installer les dépendances frontend :
-
-bash
-Copy
-Edit
 npm install
 npm run dev
-Configurer l’environnement :
+```
 
-bash
-Copy
-Edit
+3. **Configurer l’environnement :**
+
+```bash
 cp .env.example .env
-# Modifier les valeurs dans .env (DB_DATABASE, MAIL_, etc.)
-Générer la clé d’application :
-
-bash
-Copy
-Edit
 php artisan key:generate
-Lancer les migrations et les seeders :
+```
 
-bash
-Copy
-Edit
+> Mettre à jour `.env` avec vos infos MySQL et Mail.
+
+4. **Migrer et peupler la base de données :**
+
+```bash
 php artisan migrate --seed
-Démarrer le serveur :
+```
 
-bash
-Copy
-Edit
+5. **Lancer le serveur local :**
+
+```bash
 php artisan serve
-Accéder à l’application :
-http://127.0.0.1:8000
+```
+
+6. **Accéder à l’application :**
+
+[http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+---
+
