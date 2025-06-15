@@ -37,11 +37,6 @@
 - Être notifié des nouvelles commandes.
 - Visualiser les rapports et statistiques.
 
-### 🛡️ Côté Admin :
-- Gérer les utilisateurs (clients, pharmaciens).
-- Superviser les activités et modérer les données.
-- Configurer les paramètres de la plateforme.
-
 ---
 
 ## 🧠 Design Patterns Implémentés
@@ -59,8 +54,7 @@
 - **Backend** : Laravel (PHP)
 - **Frontend** : Blade, Tailwind CSS, Alpine.js
 - **Base de Données** : MySQL
-- **Outils** : Git, GitHub, Figma
-- **Modélisation** : UML (cas d’utilisation, classes, séquences)
+- **Outils** : Git, GitHub
 
 ---
 
