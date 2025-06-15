@@ -62,7 +62,7 @@
 1. **Cloner le dépôt :**
 
 ```bash
-git clone https://github.com/ton-utilisateur/farmacy-x.git
+git clone https://github.com/mohamed-elhauari/farmacy-x.git
 cd farmacy-x
 ```
 
